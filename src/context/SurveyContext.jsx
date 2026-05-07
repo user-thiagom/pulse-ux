@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import initialSurveys from '../data/initialSurveys.js'
 
 const SurveyContext = createContext();
 
@@ -8,13 +9,24 @@ export function SurveyProvider({ children }) {
     //Carrega as informações armazenadas no localstate - Thiago
     useEffect(() => {
         try {
-            const stored = localStorage.getItem("pulseux_surveys");
+            const stored = localStorage.getItem("pulseux_surveys")
             if (stored) {
                 const parsed = JSON.parse(stored);
-                setSurveys(Array.isArray(parsed) ? parsed : []);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    setSurveys(parsed);
+                    return
+                }
             }
+
+            setSurveys(initialSurveys);
+            
+            localStorage.setItem(
+                "pulseux_surveys",
+                JSON.stringify(initialSurveys)
+            );
+
         } catch {
-            setSurveys([]);
+            setSurveys(initialSurveys)
         }
     }, []);
 
