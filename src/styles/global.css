@@ -1,0 +1,30 @@
+@import "./variables.css";
+@import "./reset.css";
+
+body {
+    font-family: var(--font-family-base);
+
+    background-color: var(--background-lightmode);
+
+    color: var(--text-primary-lightmode);
+
+    min-height: 100vh;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+button {
+    transition: var(--transition-default);
+}

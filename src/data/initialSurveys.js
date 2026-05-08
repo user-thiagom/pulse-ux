@@ -1,5 +1,5 @@
 //Dados Iniciais mockados - Thiago
-export default initialSurveys = [
+const initialSurveys = [
     {
         id: "s1",
         title: "Pesquisa de Satisfação - App Mobile",
@@ -100,3 +100,5 @@ export default initialSurveys = [
         responses: []
     }
 ];
+
+export default initialSurveys;
