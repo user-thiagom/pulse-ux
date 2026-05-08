@@ -2,7 +2,7 @@
 @import "./reset.css";
 
 body {
-    font-family: var(--font-family-base);
+    font-family: var(--font-family-primary);
 
     background-color: var(--background-lightmode);
 
