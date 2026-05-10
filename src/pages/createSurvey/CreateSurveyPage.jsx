@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './CreateSurveyPage.css'
 import { useParams } from 'react-router-dom'
 import { useSurvey } from '../../context/SurveyContext'
+import SurveyEditorHeader from '../../components/survey/SurveyEditorHeader/SurveyEditorHeader'
 
 const CreateSurveyPage = () => {
     //Optei por usar o estado global para utilizá-los nos componentes controlados - Thiago
@@ -15,11 +16,28 @@ const CreateSurveyPage = () => {
         return <p>Pesquisa não encontrada</p>;
     }
 
+    function handleTitleChange(value) {
+        updateSurvey(id, {
+            title: value
+        })
+    }
+
+    function handleDescriptionChange(value) {
+        updateSurvey(id, {
+            description: value
+        })
+    }
+
     //Estutura básica da página de criação de pesquisas (vai passar por bastante alteração ainda) - Thiago
     return (
         <main className='create-survey-page'>
             <header className='create-survey-header'>
-                <h1>{survey.title}</h1>
+                <SurveyEditorHeader 
+                    title={survey.title} 
+                    description={survey.description}
+                    onTitleChange={handleTitleChange}
+                    onDescriptionChange={handleDescriptionChange}
+                />
             </header>
 
             <section className='create-survey-content'>

@@ -13,17 +13,17 @@ export function SurveyProvider({ children }) {
             if (stored) {
                 const parsed = JSON.parse(stored);
                 if (Array.isArray(parsed) && parsed.length > 0) {
+                    console.log(parsed)
                     setSurveys(parsed);
                     return
                 }
+            } else {
+                setSurveys(initialSurveys);
+                localStorage.setItem(
+                    "pulseux_surveys",
+                    JSON.stringify(initialSurveys)
+                );
             }
-
-            setSurveys(initialSurveys);
-            
-            localStorage.setItem(
-                "pulseux_surveys",
-                JSON.stringify(initialSurveys)
-            );
 
         } catch {
             setSurveys(initialSurveys)
@@ -68,6 +68,13 @@ export function SurveyProvider({ children }) {
         setSurveys(prev =>
             prev.map(s => (s.id === id ? { ...s, ...data, updatedAt: new Date().toISOString() } : s))
         );
+    }
+
+    //Deletar uma pesquisa por id - Thiago
+    function deleteSurvey(id) {
+        setSurveys(prev =>
+            prev.filter(s => s.id !== id)
+        )
     }
 
     //Publicar pesquisa - Thiago
@@ -194,6 +201,7 @@ export function SurveyProvider({ children }) {
 
                 createSurvey,
                 updateSurvey,
+                deleteSurvey,
                 publishSurvey,
                 getSurveyById,
 
