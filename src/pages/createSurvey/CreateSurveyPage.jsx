@@ -3,13 +3,13 @@ import './CreateSurveyPage.css'
 import { useParams } from 'react-router-dom'
 import { useSurvey } from '../../context/SurveyContext'
 import SurveyEditorHeader from '../../components/survey/SurveyEditorHeader/SurveyEditorHeader'
+import SurveyQuestionCard from '../../components/survey/SurveyQuestionCard/SurveyQuestionCard'
 
 const CreateSurveyPage = () => {
     //Optei por usar o estado global para utilizá-los nos componentes controlados - Thiago
-    const { getSurveyById, updateSurvey } = useSurvey();
+    const { getSurveyById, updateSurvey, deleteSurvey, addQuestion } = useSurvey();
     const { id } = useParams()
     const survey = getSurveyById(id)
-    console.log(survey)
 
     //Condicional para caso a pesquisa não seja encontrada no contexto - Thiago
     if (!survey) {
@@ -28,20 +28,50 @@ const CreateSurveyPage = () => {
         })
     }
 
+    function handleDeleteSurvey() {
+
+        const confirmDelete =
+            window.confirm(
+                "Deseja realmente deletar esta pesquisa?"
+            )
+
+        if (!confirmDelete) return
+
+        deleteSurvey(id)
+
+        //navigate("/my-surveys") - Mais pra frente
+    }
+
+    function handleAddQuestion() {
+        addQuestion(id)
+    }
+
     //Estutura básica da página de criação de pesquisas (vai passar por bastante alteração ainda) - Thiago
     return (
         <main className='create-survey-page'>
             <header className='create-survey-header'>
-                <SurveyEditorHeader 
-                    title={survey.title} 
+                <SurveyEditorHeader
+                    title={survey.title}
                     description={survey.description}
                     onTitleChange={handleTitleChange}
                     onDescriptionChange={handleDescriptionChange}
+                    onDelete={handleDeleteSurvey}
                 />
             </header>
 
             <section className='create-survey-content'>
 
+                {survey.questions.map(question => (
+                    <SurveyQuestionCard
+                        key={question.id}
+                        question={question}
+                    />
+
+                ))}
+
+                <button onClick={handleAddQuestion}>
+                    Adicionar pergunta
+                </button>
             </section>
         </main>
     )
