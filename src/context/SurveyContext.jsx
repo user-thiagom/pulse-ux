@@ -115,7 +115,7 @@ export function SurveyProvider({ children }) {
                 enabled: false,
                 condition: {
                     operator: "<=",
-                    value: 6
+                    value: 3
                 },
                 question: {
                     id: generateId(),

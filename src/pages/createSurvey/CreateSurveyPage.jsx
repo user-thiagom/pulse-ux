@@ -7,7 +7,7 @@ import SurveyQuestionCard from '../../components/survey/SurveyQuestionCard/Surve
 
 const CreateSurveyPage = () => {
     //Optei por usar o estado global para utilizá-los nos componentes controlados - Thiago
-    const { getSurveyById, updateSurvey, deleteSurvey, addQuestion } = useSurvey();
+    const { getSurveyById, updateSurvey, deleteSurvey, addQuestion, updateQuestion, removeQuestion } = useSurvey();
     const { id } = useParams()
     const survey = getSurveyById(id)
 
@@ -61,10 +61,14 @@ const CreateSurveyPage = () => {
 
             <section className='create-survey-content'>
 
-                {survey.questions.map(question => (
+                {survey.questions.map((question,index) => (
                     <SurveyQuestionCard
                         key={question.id}
                         question={question}
+                        index={index}
+                        onUpdate={updateQuestion}
+                        surveyId={id}
+                        onDelete={removeQuestion}
                     />
 
                 ))}
