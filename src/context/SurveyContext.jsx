@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import initialSurveys from '../data/initialSurveys.js'
+import { validateSurvey } from "../utils/validateSurvey.js";
 
 const SurveyContext = createContext();
 
@@ -81,14 +82,21 @@ export function SurveyProvider({ children }) {
     function publishSurvey(id) {
         setSurveys(prev =>
             prev.map(s => {
-                if (s.id !== id) return s;
+                const validation = validateSurvey(s)
 
-                if (!s.questions.length) {
-                    console.warn("Não é possível publicar sem perguntas");
-                    return s;
+                if(!validation.isValid){
+                    console.warn(validation.errors)
+                    return s
                 }
 
-                return { ...s, status: "published", updatedAt: new Date().toISOString(), publishedAt: new Date().toISOString() };
+                if (s.id !== id) return s
+
+                if (!s.questions.length) {
+                    console.warn("Não é possível publicar sem perguntas")
+                    return s
+                }
+
+                return { ...s, status: "published", updatedAt: new Date().toISOString(), publishedAt: new Date().toISOString() }
             })
         );
     }
