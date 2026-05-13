@@ -67,7 +67,14 @@ export function SurveyProvider({ children }) {
     //Atualizar pesquisas - Thiago
     function updateSurvey(id, data) {
         setSurveys(prev =>
-            prev.map(s => (s.id === id ? { ...s, ...data, updatedAt: new Date().toISOString() } : s))
+            prev.map(s => {
+                if (s.status === "published") {
+                    console.warn("Pesquisa publicada não pode ser editada.");
+                    return s;
+                }
+
+                (s.id === id ? { ...s, ...data, updatedAt: new Date().toISOString() } : s)
+            })
         );
     }
 
@@ -80,13 +87,20 @@ export function SurveyProvider({ children }) {
 
     //Publicar pesquisa - Thiago
     function publishSurvey(id) {
+        let published = false;
+
         setSurveys(prev =>
             prev.map(s => {
                 const validation = validateSurvey(s)
 
-                if(!validation.isValid){
+                if (!validation.isValid) {
                     console.warn(validation.errors)
                     return s
+                }
+
+                if (s.status === "published") {
+                    console.warn("Esta pesquisa já está publicada");
+                    return s;
                 }
 
                 if (s.id !== id) return s
@@ -96,9 +110,13 @@ export function SurveyProvider({ children }) {
                     return s
                 }
 
+                published = true
+
                 return { ...s, status: "published", updatedAt: new Date().toISOString(), publishedAt: new Date().toISOString() }
             })
-        );
+        )
+
+        return published
     }
 
     //Retornar pesquisa por id - Thiago
@@ -135,10 +153,16 @@ export function SurveyProvider({ children }) {
         };
 
         setSurveys(prev =>
-            prev.map(s =>
+            prev.map(s => {
+                if (s.status === "published") {
+                    console.warn("Pesquisa publicada não pode ser editada.");
+                    return s;
+                }
+
                 s.id === surveyId
                     ? { ...s, questions: [...s.questions, newQuestion], updatedAt: new Date().toISOString() }
                     : s
+            }
             )
         );
     }
