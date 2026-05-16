@@ -1,6 +1,7 @@
 import React from 'react'
 import './SurveyQuestionCard.css'
 import QuestionConditionalSection from '../QuestionConditionalSection/QuestionConditionalSection'
+import QuestionOptionSection from '../QuestionOptionSection/QuestionOptionSection'
 
 const SurveyQuestionCard = ({ question, index, onUpdate, onDelete, onOpenTypeModal, surveyId }) => {
     return (
@@ -30,27 +31,34 @@ const SurveyQuestionCard = ({ question, index, onUpdate, onDelete, onOpenTypeMod
                     </span>
                 </div>
 
-                <div className="question-card-conditional">
-                    <span>
-                        Pergunta condicional
-                    </span>
-                    <input
-                        type="checkbox"
-                        checked={question.conditional.enabled}
-                        onChange={e => onUpdate(surveyId, question.id, {
-                            conditional: { ...question.conditional, enabled: e.target.checked }
-                        })}
-                    />
-                    {
-                        question.conditional.enabled && (
-                            <QuestionConditionalSection
-                                question={question}
-                                onUpdate={onUpdate}
-                                surveyId={surveyId}
-                            />
-                        )
-                    }
-                </div>
+                {question.type !== "text" && question.type !== "badge" && (
+                    <div className="question-card-conditional">
+                        <span>
+                            Pergunta condicional
+                        </span>
+                        <input
+                            type="checkbox"
+                            checked={question.conditional.enabled}
+                            onChange={e => onUpdate(surveyId, question.id, {
+                                conditional: { ...question.conditional, enabled: e.target.checked }
+                            })}
+                        />
+                        {
+                            question.conditional.enabled && (
+                                <QuestionConditionalSection
+                                    question={question}
+                                    onUpdate={onUpdate}
+                                    surveyId={surveyId}
+                                />
+                            )
+                        }
+                    </div>
+                )}
+
+                {question.type == "badge" && (
+                    <QuestionOptionSection question={question} onUpdate={onUpdate} surveyId={surveyId}/>
+                )}
+
             </div>
 
             <button onClick={() => onDelete(surveyId, question.id)}>
