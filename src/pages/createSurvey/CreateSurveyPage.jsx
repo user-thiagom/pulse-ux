@@ -4,9 +4,11 @@ import { useParams } from 'react-router-dom'
 import { useSurvey } from '../../context/SurveyContext'
 import SurveyEditorHeader from '../../components/survey/SurveyEditorHeader/SurveyEditorHeader'
 import SurveyQuestionCard from '../../components/survey/SurveyQuestionCard/SurveyQuestionCard'
+import QuestionTypeModal from '../../components/survey/QuestionTypeModal/QuestionTypeModal'
 
 const CreateSurveyPage = () => {
-    const [isPublishing, setIsPublishing] = useState(false);
+    const [isTypeModalOpen, setIsTypeModalOpen] = useState(false);
+    const [selectedQuestionId, setSelectedQuestionId] = useState(null);
 
     //Optei por usar o estado global para utilizá-los nos componentes controlados - Thiago
     const { getSurveyById, updateSurvey, deleteSurvey, addQuestion, updateQuestion, removeQuestion } = useSurvey();
@@ -65,6 +67,16 @@ const CreateSurveyPage = () => {
         }, 2000);
     }
 
+    function handleOpenTypeModal(questionId) {
+        setSelectedQuestionId(questionId)
+        setIsTypeModalOpen(true)
+    }
+
+    function handleSelectedQuestionType(type) {
+        updateQuestion(id, selectedQuestionId, { type })
+        setIsTypeModalOpen(false)
+    }
+
     //Estutura básica da página de criação de pesquisas (vai passar por bastante alteração ainda) - Thiago
     return (
         <main className='create-survey-page'>
@@ -89,9 +101,18 @@ const CreateSurveyPage = () => {
                         onUpdate={updateQuestion}
                         surveyId={id}
                         onDelete={removeQuestion}
+                        onOpenTypeModal={handleOpenTypeModal}
                     />
 
                 ))}
+
+                {isTypeModalOpen && (
+                    <QuestionTypeModal
+                        isOpen={isTypeModalOpen}
+                        onClose={() => setIsTypeModalOpen(false)}
+                        onSelectType={handleSelectedQuestionType}
+                    />
+                )}
 
                 <button onClick={handleAddQuestion}>
                     Adicionar pergunta

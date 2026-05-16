@@ -33,7 +33,7 @@ const QuestionTypeModal = ({ isOpen, onClose, onSelectType }) => {
                             >
 
                                 <span>
-                                    {config.icon}
+                                    {}
                                 </span>
 
                                 <div>

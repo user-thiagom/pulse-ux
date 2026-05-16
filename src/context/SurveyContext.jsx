@@ -72,8 +72,7 @@ export function SurveyProvider({ children }) {
                     console.warn("Pesquisa publicada não pode ser editada.");
                     return s;
                 }
-
-                (s.id === id ? { ...s, ...data, updatedAt: new Date().toISOString() } : s)
+                return s.id === id ? { ...s, ...data, updatedAt: new Date().toISOString() } : s;
             })
         );
     }
@@ -154,16 +153,15 @@ export function SurveyProvider({ children }) {
 
         setSurveys(prev =>
             prev.map(s => {
-                if (s.status === "published") {
+                if (s.id === surveyId && s.status === "published") {
                     console.warn("Pesquisa publicada não pode ser editada.");
                     return s;
                 }
 
-                s.id === surveyId
-                    ? { ...s, questions: [...s.questions, newQuestion], updatedAt: new Date().toISOString() }
-                    : s
-            }
-            )
+                return s.id === surveyId
+                    ? { ...s, questions: [...(s.questions || []), newQuestion], updatedAt: new Date().toISOString() }
+                    : s;
+            })
         );
     }
 
