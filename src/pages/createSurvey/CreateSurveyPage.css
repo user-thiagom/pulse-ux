@@ -3,15 +3,13 @@
 */
 .create-survey-page {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
     /* padding: var(--spacing-lg); */
 
     background-color: var(--background-lightmode);
-}
-
-.create-survey-header h1 {
-    font-size: var(--font-size-xl);
-    color: var(--text-primary-lightmode);
 }
 
 .create-survey-content {

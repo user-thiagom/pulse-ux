@@ -1,0 +1,89 @@
+.survey-editor-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.survey-editor-info {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.survey-title-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.survey-title-display h1 {
+    font-size: var(--font-size-xl);
+    line-height: 1.0;
+    color: #111111;
+}
+
+.survey-description-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.survey-description-display p {
+    font-size: var(--font-size-md);
+    color: var(--text-secondary-lightmode);
+}
+
+.survey-title-input,
+.survey-description-input {
+    font-family: var(--font-family-primary);
+    width: 100%;
+    border: 2px solid #E0E0E0;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.survey-description-input {
+
+    margin-top: 5px;
+    min-height: 120px;
+    resize: vertical;
+}
+
+.survey-editor-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.survey-editor-actions button {
+    border: none;
+    border-radius: var(--radius-button);
+    padding: 8px 9px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.survey-editor-primary-actions{
+    display: flex;
+    gap: 5px;
+}
+
+.save-button {
+    background-color: #374151;
+    color: var(--background-lightmode);
+}
+
+.publish-button {
+    background: var(--color-primary-gradient);
+    color: var(--background-lightmode);
+}
+
+.delete-button {
+    background-color: #FEE2E2;
+    color: #D32F2F;
+}

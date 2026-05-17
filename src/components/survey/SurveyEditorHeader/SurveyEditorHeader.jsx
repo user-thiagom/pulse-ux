@@ -14,6 +14,7 @@ const SurveyEditorHeader = ({ title, description, onTitleChange, onDescriptionCh
                     {isEditingTitle ? (
 
                         <input
+                            className="survey-title-input"
                             autoFocus
                             value={title}
                             onChange={(e) =>
@@ -48,6 +49,7 @@ const SurveyEditorHeader = ({ title, description, onTitleChange, onDescriptionCh
                     {isEditingDescription ? (
 
                         <textarea
+                            className="survey-description-input"
                             autoFocus
                             value={description}
                             onChange={(e) =>
@@ -60,7 +62,7 @@ const SurveyEditorHeader = ({ title, description, onTitleChange, onDescriptionCh
 
                     ) : (
 
-                        <div>
+                        <div className="survey-description-display">
 
                             <p>
                                 {description || "Adicione uma descrição"}
@@ -82,15 +84,17 @@ const SurveyEditorHeader = ({ title, description, onTitleChange, onDescriptionCh
 
             <div className="survey-editor-actions">
 
-                <button onClick={onSave}>
-                    Salvar e sair
-                </button>
+                <div className="survey-editor-primary-actions">
+                    <button className="save-button" onClick={onSave}>
+                        Salvar e sair
+                    </button>
 
-                <button onClick={onPublish}>
-                    Publicar pesquisa
-                </button>
+                    <button className="publish-button" onClick={onPublish}>
+                        Publicar pesquisa
+                    </button>
+                </div>
 
-                <button onClick={onDelete}>
+                <button className="delete-button" onClick={onDelete}>
                     Deletar
                 </button>
 
