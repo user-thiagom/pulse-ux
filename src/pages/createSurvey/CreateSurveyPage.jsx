@@ -115,8 +115,12 @@ const CreateSurveyPage = () => {
                     />
                 )}
 
-                <button onClick={handleAddQuestion}>
-                    Adicionar pergunta
+                <button
+                    className="add-question-button"
+                    onClick={handleAddQuestion}
+                >
+                    <span>➕</span>
+                    <span>Adicionar nova pergunta</span>
                 </button>
             </section>
         </main>

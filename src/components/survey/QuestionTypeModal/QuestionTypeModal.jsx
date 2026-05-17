@@ -1,4 +1,5 @@
 import React from 'react'
+import './QuestionTypeModal.css'
 import { QUESTION_TYPE_CONFIG } from '../../../utils/questionTypeConfig';
 
 const QuestionTypeModal = ({ isOpen, onClose, onSelectType }) => {
@@ -33,7 +34,7 @@ const QuestionTypeModal = ({ isOpen, onClose, onSelectType }) => {
                             >
 
                                 <span>
-                                    {}
+                                    📋
                                 </span>
 
                                 <div>
