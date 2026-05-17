@@ -1,4 +1,5 @@
 import React from 'react'
+import './QuestionTypeModal.css'
 import { QUESTION_TYPE_CONFIG } from '../../../utils/questionTypeConfig';
 import './QuestionTypeModal.css'
 
@@ -34,7 +35,7 @@ const QuestionTypeModal = ({ isOpen, onClose, onSelectType }) => {
                             >
 
                                 <span>
-                                    {}
+                                    📋
                                 </span>
 
                                 <div className="question-type-option-content">

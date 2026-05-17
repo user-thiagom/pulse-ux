@@ -62,7 +62,7 @@ const SurveyQuestionCard = ({ question, index, onUpdate, onDelete, onOpenTypeMod
             </div>
 
             <button onClick={() => onDelete(surveyId, question.id)}>
-                🗑
+                 🗑
             </button>
 
         </div>

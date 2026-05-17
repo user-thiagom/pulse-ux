@@ -1,4 +1,5 @@
 import React from 'react'
+import './QuestionConditionalSection.css'
 import { QUESTION_TYPE_CONFIG } from '../../../utils/questionTypeConfig'
 
 const QuestionConditionalSection = ({ question, onUpdate, onOpenTypeModel, surveyId }) => {
