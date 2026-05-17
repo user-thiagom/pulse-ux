@@ -1,0 +1,115 @@
+.option-section {
+    margin-top: 22px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e5e5e5;
+}
+
+.option-section h3 {
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #222;
+
+    margin-bottom: 16px;
+}
+
+.option-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-input {
+    width: 100%;
+
+    border: 1px solid #d6d6d6;
+
+    border-radius: 14px;
+
+    padding: 14px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    background: white;
+
+    transition: 0.2s;
+}
+
+.option-input:focus {
+    border-color: #ff9500;
+}
+
+.add-option-button {
+    margin-top: 18px;
+
+    border: none;
+
+    background: linear-gradient(
+        90deg,
+        #ff4d4d,
+        #ff9500
+    );
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 14px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    box-shadow:
+        0 4px 10px rgba(255,149,0,0.2);
+}
+
+.add-option-button:hover {
+    transform: translateY(-2px);
+
+    opacity: 0.95;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+.option-item input {
+    margin-bottom: 0;
+}
+
+.remove-option-button {
+    min-width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #ff4d4d;
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.remove-option-button:hover {
+    background: #e53935;
+
+    transform: scale(1.05);
+}
