@@ -1,0 +1,40 @@
+.navigation-header {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 24px 16px;
+    background-color: var(--surface-primary-lightmode);
+    box-shadow: var(--shadow-sm)
+}
+
+.navigation-header-back-button {
+    width: fit-content;
+    border: none;
+    background: none;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.navigation-header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.navigation-header-content h1 {
+    font-size: var(--font-size-lg);
+    color: var(--text-primary-lightmode);
+}
+
+.navigation-header-content p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary-lightmode);
+}
+
+.navigation-header-children {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}

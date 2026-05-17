@@ -5,6 +5,7 @@ import { useSurvey } from '../../context/SurveyContext'
 import SurveyEditorHeader from '../../components/survey/SurveyEditorHeader/SurveyEditorHeader'
 import SurveyQuestionCard from '../../components/survey/SurveyQuestionCard/SurveyQuestionCard'
 import QuestionTypeModal from '../../components/survey/QuestionTypeModal/QuestionTypeModal'
+import NavigationHeader from '../../components/layout/NavigationHeader/NavigationHeader'
 
 const CreateSurveyPage = () => {
     const [isTypeModalOpen, setIsTypeModalOpen] = useState(false);
@@ -80,7 +81,7 @@ const CreateSurveyPage = () => {
     //Estutura básica da página de criação de pesquisas (vai passar por bastante alteração ainda) - Thiago
     return (
         <main className='create-survey-page'>
-            <header className='create-survey-header'>
+            <NavigationHeader subtitle={"Pesquisa personalizada"}>
                 <SurveyEditorHeader
                     title={survey.title}
                     description={survey.description}
@@ -89,7 +90,7 @@ const CreateSurveyPage = () => {
                     onDelete={handleDeleteSurvey}
                     onPublish={handlePublishSurvey}
                 />
-            </header>
+            </NavigationHeader>
 
             <section className='create-survey-content'>
 

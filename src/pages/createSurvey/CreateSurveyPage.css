@@ -4,13 +4,9 @@
 .create-survey-page {
     min-height: 100vh;
 
-    padding: var(--spacing-lg);
+    /* padding: var(--spacing-lg); */
 
     background-color: var(--background-lightmode);
-}
-
-.create-survey-header {
-    margin-bottom: 32px;
 }
 
 .create-survey-header h1 {
