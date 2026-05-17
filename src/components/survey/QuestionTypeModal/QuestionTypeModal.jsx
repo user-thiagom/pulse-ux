@@ -1,5 +1,6 @@
 import React from 'react'
 import { QUESTION_TYPE_CONFIG } from '../../../utils/questionTypeConfig';
+import './QuestionTypeModal.css'
 
 const QuestionTypeModal = ({ isOpen, onClose, onSelectType }) => {
     if (!isOpen) {
@@ -9,13 +10,13 @@ const QuestionTypeModal = ({ isOpen, onClose, onSelectType }) => {
     return (
         <div className="modal-overlay">
             <div className="question-type-modal">
-                <header>
-                    <h2>
-                        Selecione o tipo
-                    </h2>
+                <header className="question-type-modal-header">
                     <button onClick={onClose}>
                         X
                     </button>
+                    <h2>
+                        Selecione o tipo
+                    </h2>
                 </header>
 
                 <div className="question-type-list">
@@ -36,7 +37,7 @@ const QuestionTypeModal = ({ isOpen, onClose, onSelectType }) => {
                                     {}
                                 </span>
 
-                                <div>
+                                <div className="question-type-option-content">
                                     <strong>
                                         {config.label}
                                     </strong>

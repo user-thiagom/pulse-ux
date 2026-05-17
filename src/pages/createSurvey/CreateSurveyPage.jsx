@@ -6,6 +6,7 @@ import SurveyEditorHeader from '../../components/survey/SurveyEditorHeader/Surve
 import SurveyQuestionCard from '../../components/survey/SurveyQuestionCard/SurveyQuestionCard'
 import QuestionTypeModal from '../../components/survey/QuestionTypeModal/QuestionTypeModal'
 import NavigationHeader from '../../components/layout/NavigationHeader/NavigationHeader'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 const CreateSurveyPage = () => {
     const [isTypeModalOpen, setIsTypeModalOpen] = useState(false);
