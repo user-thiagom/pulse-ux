@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import LandingPage from '../pages/landing/LandingPage'
 import HomePage from '../pages/home/HomePage'
+import LoginPage from '../pages/login/LoginPage'
+import CadastroPage from '../pages/cadastro/CadastroPage'
 
 export default function AppRoutes() {
     return (
@@ -8,6 +10,8 @@ export default function AppRoutes() {
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/home" element={<HomePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/cadastro" element={<CadastroPage />} />
             </Routes>
         </BrowserRouter>
     )

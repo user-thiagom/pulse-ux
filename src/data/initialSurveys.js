@@ -1,4 +1,4 @@
-//Dados Iniciais mockados - Thiago
+
 const initialSurveys = [
     {
         id: "s1",
