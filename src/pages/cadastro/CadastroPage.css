@@ -1,0 +1,6 @@
+
+@import '../login/LoginPage.css';
+
+.cadastro-sidebar {
+    background: linear-gradient(135deg, #E74031 0%, #FA8704 100%);
+}
