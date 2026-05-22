@@ -1,6 +1,7 @@
 import React from 'react'
 import './NavigationHeader.css'
 import { useNavigate } from 'react-router-dom'
+import { ArrowLeft } from 'lucide-react'
 
 const NavigationHeader = ({ title, subtitle, children }) => {
     const navigate = useNavigate()
@@ -11,7 +12,13 @@ const NavigationHeader = ({ title, subtitle, children }) => {
                 className="navigation-header-back-button"
                 onClick={() => navigate(-1)}
             >
-                ← Voltar
+
+                <ArrowLeft size={18} />
+
+                <span>
+                    Voltar
+                </span>
+
             </button>
 
             {

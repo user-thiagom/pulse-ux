@@ -19,51 +19,93 @@ const QuestionConditionalSection = ({ question, onUpdate, onOpenTypeModel, surve
         })
     }
 
-    return (
-        <div>
-            <label>
+return (
+
+    <div className="conditional-section">
+
+        <div className="conditional-controls">
+
+            <span>
                 Se {question.type} for
-                <select onChange={e => onUpdate(surveyId, question.id, {
-                    conditional: {
-                        ...question.conditional,
-                        condition: {
-                            ...question.conditional.condition,
-                            operator: e.target.value
+            </span>
+
+            <select
+                onChange={e =>
+                    onUpdate(surveyId, question.id, {
+                        conditional: {
+                            ...question.conditional,
+                            condition: {
+                                ...question.conditional.condition,
+                                operator: e.target.value
+                            }
                         }
-                    }
-                })}>
-                    <option value="" disabled selected>Selecione uma condição</option>
-                    <option value="==">Igual a</option>
-                    <option value=">">Maior que</option>
-                    <option value=">=">Maior ou igual a</option>
-                    <option value="<">Menor que</option>
-                    <option value="<=">Menor ou igual a</option>
-                </select>
-            </label>
+                    })
+                }
+            >
+                <option value="">Condição</option>
+
+                <option value="==">
+                    Igual a
+                </option>
+
+                <option value=">">
+                    Maior que
+                </option>
+
+                <option value=">=">
+                    Maior ou igual
+                </option>
+
+                <option value="<">
+                    Menor que
+                </option>
+
+                <option value="<=">
+                    Menor ou igual
+                </option>
+
+            </select>
+
             <input
                 type="number"
                 value={question.conditional.condition.value}
                 min={config.condition.min}
                 max={config.condition.max}
                 step={config.condition.step}
-                onChange={e => handleConditionalValueChange(e.target.value)}
+                onChange={e =>
+                    handleConditionalValueChange(e.target.value)
+                }
             />
-            <hr />
-            <h3>Pergunta condicional</h3>
-            <textarea
-                value={question.conditional.question.text}
-                onChange={e => onUpdate(surveyId, question.id, {
-                    conditional: {
-                        ...question.conditional,
-                        question: {
-                            ...question.conditional.question,
-                            text: e.target.value
-                        }
-                    }
-                })}
-            />
+
         </div>
-    )
+
+        <div className="conditional-question">
+
+            <h3>
+                Pergunta condicional
+            </h3>
+
+            <textarea
+                placeholder="Digite a pergunta condicional..."
+                value={question.conditional.question.text}
+                onChange={e =>
+                    onUpdate(surveyId, question.id, {
+                        conditional: {
+                            ...question.conditional,
+                            question: {
+                                ...question.conditional.question,
+                                text: e.target.value
+                            }
+                        }
+                    })
+                }
+            />
+
+        </div>
+
+    </div>
+
+)
 }
 
 export default QuestionConditionalSection

@@ -8,13 +8,35 @@
 }
 
 .navigation-header-back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
     width: fit-content;
+
     border: none;
-    background: none;
-    font-size: var(--font-size-sm);
+    border-radius: 12px;
+
+    padding: 10px 14px;
+
+    background: var(--color-primary-gradient);
+
+    color: white;
+
+    font-size: 15px;
     font-weight: 600;
-    color: var(--color-primary);
+
     cursor: pointer;
+
+    transition: 0.2s;
+
+    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.25);
+}
+
+.navigation-header-back-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow: 0 6px 14px rgba(249, 115, 22, 0.35);
 }
 
 .navigation-header-content {
