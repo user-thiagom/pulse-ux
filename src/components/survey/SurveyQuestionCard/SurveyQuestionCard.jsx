@@ -16,11 +16,22 @@ const SurveyQuestionCard = ({ question, index, onUpdate, onDelete, onOpenTypeMod
                     Pergunta {index + 1}
                 </h2>
 
-                <textarea
-                    placeholder='Digite sua pergunta...'
-                    value={question.text}
-                    onChange={e => onUpdate(surveyId, question.id, { text: e.target.value })}
-                ></textarea>
+                <div className='question-trash'>
+
+                    <textarea
+                        placeholder='Digite sua pergunta...'
+                        value={question.text}
+                        onChange={e => onUpdate(surveyId, question.id, { text: e.target.value })}
+                    ></textarea>
+
+                    <button onClick={() => onDelete(surveyId, question.id)}
+                        className='question-card-trash'
+                    >
+                        ✕
+                    </button>
+
+                </div>
+
 
                 <div className="question-card-select">
                     <button onClick={() => onOpenTypeModal(question.id)}>
@@ -56,14 +67,13 @@ const SurveyQuestionCard = ({ question, index, onUpdate, onDelete, onOpenTypeMod
                 )}
 
                 {question.type == "badge" && (
-                    <QuestionOptionSection question={question} onUpdate={onUpdate} surveyId={surveyId}/>
+                    <QuestionOptionSection question={question} onUpdate={onUpdate} surveyId={surveyId} />
                 )}
 
             </div>
 
-            <button onClick={() => onDelete(surveyId, question.id)}>
-                 🗑
-            </button>
+
+
 
         </div>
     )

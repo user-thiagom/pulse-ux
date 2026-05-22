@@ -170,3 +170,33 @@
 
     width: 70px;
 }
+
+.question-card-trash{
+    align-items: center;
+
+    min-width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #ff4d4d;
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    
+
+}
+
+.question-trash{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './SurveyEditorHeader.css'
+import { PencilLine, Trash2, SquarePen } from "lucide-react";
 
 const SurveyEditorHeader = ({ title, description, onTitleChange, onDescriptionChange, onSave, onPublish, onDelete }) => {
     const [isEditingTitle, setIsEditingTitle] = useState(false);
@@ -34,11 +35,10 @@ const SurveyEditorHeader = ({ title, description, onTitleChange, onDescriptionCh
                             </h1>
 
                             <button
-                                onClick={() =>
-                                    setIsEditingTitle(true)
-                                }
+                                className="edit-button"
+                                onClick={() => setIsEditingTitle(true)}
                             >
-                                ✏️
+                                <PencilLine size={18} />
                             </button>
 
                         </div>
@@ -69,11 +69,10 @@ const SurveyEditorHeader = ({ title, description, onTitleChange, onDescriptionCh
                             </p>
 
                             <button
-                                onClick={() =>
-                                    setIsEditingDescription(true)
-                                }
+                                className="edit-button"
+                                onClick={() => setIsEditingTitle(true)}
                             >
-                                ✏️
+                                <PencilLine size={18} />
                             </button>
 
                         </div>
@@ -95,7 +94,8 @@ const SurveyEditorHeader = ({ title, description, onTitleChange, onDescriptionCh
                 </div>
 
                 <button className="delete-button" onClick={onDelete}>
-                    Deletar
+                    <Trash2 size={16} />
+                    Excluir pesquisa
                 </button>
 
             </div>
