@@ -70,7 +70,7 @@ const SurveyEditorHeader = ({ title, description, onTitleChange, onDescriptionCh
 
                             <button
                                 className="edit-button"
-                                onClick={() => setIsEditingTitle(true)}
+                                onClick={() => setIsEditingDescription(true)}
                             >
                                 <PencilLine size={18} />
                             </button>

@@ -15,7 +15,8 @@
 .create-survey-content {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 0px;
+    padding: 0px 10px;
 }
 
 .add-question-button {

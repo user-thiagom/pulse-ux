@@ -1,5 +1,5 @@
 .question-card {
-    background: #f8f8f8;
+    background: var(--surface-primary-lightmode);
     border-radius: 24px;
     padding: 20px;
     margin-bottom: 20px;
