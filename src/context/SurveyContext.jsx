@@ -7,7 +7,7 @@ const SurveyContext = createContext();
 export function SurveyProvider({ children }) {
     const [surveys, setSurveys] = useState([]);
 
-    //Carrega as informações armazenadas no localstate - Thiago
+    
     useEffect(() => {
         try {
             const stored = localStorage.getItem("pulseux_surveys")
@@ -31,21 +31,21 @@ export function SurveyProvider({ children }) {
         }
     }, []);
 
-    //Salvar no localStorage - Thiago
+    
     useEffect(() => {
         localStorage.setItem("pulseux_surveys", JSON.stringify(surveys));
     }, [surveys]);
 
-    //Gerador de id - Thiago
+    
     function generateId() {
         return crypto.randomUUID();
     }
 
-    // ======================
-    // Pesquisas
-    // ======================
+    
+    
+    
 
-    //Criar pesquisas - Thiago
+    
     function createSurvey() {
         const newSurvey = {
             id: generateId(),
@@ -64,7 +64,7 @@ export function SurveyProvider({ children }) {
         return newSurvey.id;
     }
 
-    //Atualizar pesquisas - Thiago
+    
     function updateSurvey(id, data) {
         setSurveys(prev =>
             prev.map(s => {
@@ -118,23 +118,23 @@ export function SurveyProvider({ children }) {
         return published
     }
 
-    //Retornar pesquisa por id - Thiago
+    
     function getSurveyById(id) {
         return surveys.find(s => s.id === id) || null;
     }
 
-    // ======================
-    // Perguntas da pesquisa
-    // ======================
+    
+    
+    
 
-    //Adicionar pesquisa - Thiago
+    
     function addQuestion(surveyId) {
-        //por padrão, a pesquisa vai iniciar nesse formato, porém poderá ser alterada - Thiago
+        
         const questionId = generateId()
         const newQuestion = {
             id: questionId,
             text: "",
-            type: "csat", //ou csat, slider, radiogroup, text
+            type: "csat", 
             options: [],
             conditional: {
                 enabled: false,
@@ -165,7 +165,7 @@ export function SurveyProvider({ children }) {
         );
     }
 
-    //Atualizar pergunta - Thiago
+    
     function updateQuestion(surveyId, questionId, data) {
         setSurveys(prev =>
             prev.map(s =>
@@ -182,7 +182,7 @@ export function SurveyProvider({ children }) {
         );
     }
 
-    //Remover pergunta - Thiago
+    
     function removeQuestion(surveyId, questionId) {
         setSurveys(prev =>
             prev.map(s =>
@@ -197,11 +197,11 @@ export function SurveyProvider({ children }) {
         );
     }
 
-    // ======================
-    // Respostas
-    // ======================
+    
+    
+    
 
-    //Adicionar resposta à pesquisa - Thiago
+    
     function addResponse(surveyId, response) {
         if (!response || !response.answers) {
             console.warn("Resposta inválida");
@@ -220,9 +220,9 @@ export function SurveyProvider({ children }) {
         );
     }
 
-    // ======================
-    // PROVIDER
-    // ======================
+    
+    
+    
 
     return (
         <SurveyContext.Provider
@@ -251,35 +251,5 @@ export function useSurvey() {
     return useContext(SurveyContext);
 }
 
-/* ESTRUTURA DE DADOS DA RESPOSTA
 
-  {
-    id: "resp1",
-    createdAt: "2026-05-06T12:00:00Z",
-    answers: [
-      {
-        questionId: "q1",
-        value: 8
-      },
-      {
-        questionId: "q2",
-        value: "Muito bom, mas pode melhorar"
-      }
-    ]
-  }
-*/
 
-/*  ESTRUTURA DE DADOS DE OPTIONS (ex)
-    options: [
-  {
-    id: "opt1",
-    label: "Dashboard",
-    value: "dashboard"
-  },
-  {
-    id: "opt2",
-    label: "Relatórios",
-    value: "relatorios"
-  }
-]
-*/

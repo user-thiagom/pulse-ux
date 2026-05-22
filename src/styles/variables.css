@@ -1,8 +1,6 @@
 :root {
 
-    /* =========================
-       CORES PRINCIPAIS
-    ========================== */
+    
 
     --color-primary: #FA8704;
     --color-primary-gradient: linear-gradient(to right, #E74031, #FA8704);
@@ -12,53 +10,39 @@
     --color-danger: #D32F2F;
     --color-info: #29B6F6;
 
-    /* =========================
-       TEXTO
-    ========================== */
+    
 
     --text-primary-lightmode: #0D0D0D;
     --text-secondary-lightmode: #757575;
     --text-disabled-lightmode: #BDBDBD;
 
-    /* =========================
-       BACKGROUNDS
-    ========================== */
+    
 
     --background-lightmode: #F5F5F5;
     --surface-primary-lightmode: #ffffff;
     --surface-secondary-lightmode: #FAFAFA;
     --background-secondary-button-lightmode: #FFFFFF
 
-    /* =========================
-       BORDER
-    ========================== */
+    
 
     --border-color: #dddddd;
     --border-secondary-button-lightmode: #FB8C00;
 
-    /* =========================
-       HOVER
-    ========================== */
+    
 
     --hover-button-lightmode: #F4511E;
 
-    /* =========================
-       BORDER RADIUS
-    ========================== */
+    
 
     --radius-button: 8px;
     --radius-card: 10px;
 
-    /* =========================
-       SOMBRAS
-    ========================== */
+    
 
     --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.25);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
 
-    /* =========================
-       ESPAÇAMENTOS
-    ========================== */
+    
 
     --spacing-xs: 4px;
     --spacing-sm: 8px;
@@ -66,9 +50,7 @@
     --spacing-lg: 24px;
     --spacing-xl: 32px;
 
-    /* =========================
-       TIPOGRAFIA
-    ========================== */
+    
 
     --font-family-primary: "Lato", sans-serif;
     --font-family-secondary: "Montserrat", sans-serif;
@@ -78,9 +60,7 @@
     --font-size-lg: 20px;
     --font-size-xl: 28px;
 
-    /* =========================
-       TRANSITIONS
-    ========================== */
+    
 
     --transition-default: 0.2s ease;
 }
