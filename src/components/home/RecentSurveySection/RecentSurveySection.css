@@ -1,0 +1,44 @@
+.recent-surveys-section {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+    padding: 0px 12px;
+}
+
+.recent-surveys-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    gap: 16px;
+
+}
+
+.recent-surveys-header h2 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--text-primary-lightmode);
+}
+
+.recent-surveys-header button {
+    border: none;
+    background: none;
+
+    font-size: var(--font-size-sm);
+
+    font-weight: 500;
+
+    background: var(--color-primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    cursor: pointer;
+}
+
+.recent-surveys-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
