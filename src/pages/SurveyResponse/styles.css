@@ -1,8 +1,4 @@
-/* ==========================================================================
-   1. CORES E VARIÁVEIS (Suporta Modo Claro e Modo Escuro)
-   ========================================================================== */
 .survey-container {
-  /* Cores padrão (Modo Claro) */
   --bg-body: #f3f4f6;
   --bg-card: #ffffff;
   --text-main: #111111;
@@ -12,21 +8,27 @@
   --bg-progress: #e5e5e5;
   --bg-textarea: #f5f5f5;
   --border-textarea: #e0e0e0;
+  --bg-chip: #f7fafc;
+  --border-chip: #e2e8f0;
+  --bg-nps: #ffffff;
+  --border-nps: #e2e8f0;
 }
 
-/* Quando o container tiver a classe .dark, o CSS troca os valores abaixo */
 .survey-container.dark {
-  --bg-body: #121212;          /* Fundo do PC escuro */
-  --bg-card: #1e1e1e;          /* Card do app escuro */
-  --text-main: #f5f5f5;         /* Texto principal claro */
-  --bg-button-header: #333333; /* Botões do header escuros */
+  --bg-body: #121212;
+  --bg-card: #1e1e1e;
+  --text-main: #f5f5f5;
+  --bg-button-header: #333333;
   --text-button-header: #e0e0e0;
   --bg-progress: #2d2d2d;
   --bg-textarea: #2d2d2d;
   --border-textarea: #444444;
+  --bg-chip: #2d3748;
+  --border-chip: #4a5568;
+  --bg-nps: #2d3748;
+  --border-nps: #4a5568;
 }
 
-/* Aplicando o fundo dinâmico no body do PC usando JavaScript invisível ou herança */
 body {
   margin: 0;
   padding: 0;
@@ -34,14 +36,10 @@ body {
   transition: background-color 0.3s ease;
 }
 
-/* Se o container escuro estiver ativo, ajustamos o fundo do body geral */
 body:has(.survey-container.dark) {
   background-color: #121212;
 }
 
-/* ==========================================================================
-   2. ESTRUTURA DO CONTAINER (PC por padrão)
-   ========================================================================== */
 .survey-container {
   display: flex;
   flex-direction: column;
@@ -51,8 +49,6 @@ body:has(.survey-container.dark) {
   padding: 30px 36px;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  
-  /* Uso das variáveis mágicas */
   background-color: var(--bg-card);
   color: var(--text-main);
   border-radius: 24px;
@@ -60,11 +56,6 @@ body:has(.survey-container.dark) {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ==========================================================================
-   3. ESTILOS DOS COMPONENTES INTERNOS
-   ========================================================================== */
-
-/* Área: Header */
 .survey-header-container {
   display: flex;
   justify-content: space-between;
@@ -98,7 +89,6 @@ body:has(.survey-container.dark) {
   filter: brightness(0.9);
 }
 
-/* Área: Progresso */
 .survey-progress-wrapper {
   margin-bottom: 25px;
   text-align: center;
@@ -123,10 +113,9 @@ body:has(.survey-container.dark) {
   margin-top: 12px;
   font-size: 14px;
   font-weight: bold;
-  color: #ff8c00; /* Mantém o tom laranja do print */
+  color: #ff8c00;
 }
 
-/* Área: Conteúdo da Pergunta */
 .survey-card {
   flex: 1;
   display: flex;
@@ -149,7 +138,10 @@ body:has(.survey-container.dark) {
   margin-bottom: 35px;
 }
 
-/* Interface de Estrelas (Rating) */
+.question-content-renderer {
+  width: 100%;
+}
+
 .stars-rating-container {
   display: flex;
   justify-content: center;
@@ -168,7 +160,143 @@ body:has(.survey-container.dark) {
   transform: scale(1.15);
 }
 
-/* Textarea para perguntas tipo "text" */
+.slider-input-container {
+  width: 100%;
+  padding: 10px 5px;
+  box-sizing: border-box;
+}
+
+.slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+}
+
+.custom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  background: var(--bg-progress);
+  outline: none;
+  position: relative;
+  z-index: 2;
+}
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 6px;
+  height: 28px;
+  background: #ff6a00;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.custom-slider::-moz-range-thumb {
+  width: 6px;
+  height: 28px;
+  background: #ff6a00;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.slider-center-line {
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background-color: #ff6a00;
+  z-index: 1;
+  transform: translateX(-50%);
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #718096;
+}
+
+.nps-input-container {
+  width: 100%;
+}
+
+.nps-grid {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.nps-btn {
+  height: 40px;
+  border: 1px solid var(--border-nps);
+  background: var(--bg-nps);
+  color: var(--text-main);
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.nps-btn.active {
+  background: #ff6a00;
+  color: white;
+  border-color: #ff6a00;
+}
+
+.nps-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+.multiple-choice-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.choice-chip {
+  width: 100%;
+  padding: 14px 20px;
+  text-align: left;
+  background: var(--bg-chip);
+  border: 1px solid var(--border-chip);
+  color: var(--text-main);
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.choice-chip:hover {
+  filter: brightness(0.95);
+}
+
+.choice-chip.active {
+  background: rgba(255, 106, 0, 0.1);
+  border-color: #ff6a00;
+  color: #ff6a00;
+  font-weight: 600;
+}
+
+.survey-container.dark .choice-chip.active {
+  background: rgba(255, 106, 0, 0.2);
+  border-color: #ff6a00;
+  color: #ff6a00;
+}
+
 .survey-textarea {
   width: 100%;
   height: 120px;
@@ -188,7 +316,6 @@ body:has(.survey-container.dark) {
   border-color: #ff7300;
 }
 
-/* Área: Botão de Ação */
 .survey-actions {
   width: 100%;
   padding-top: 20px;
@@ -212,7 +339,6 @@ body:has(.survey-container.dark) {
   opacity: 0.95;
 }
 
-/* Telas de Estado Auxiliares */
 .survey-status-screen, .state-completed {
   display: flex;
   flex-direction: column;
@@ -227,12 +353,9 @@ body:has(.survey-container.dark) {
   height: 70vh;
 }
 
-/* ==========================================================================
-   4. MEDIA QUERY: COMPORTAMENTO MOBILE
-   ========================================================================== */
 @media (max-width: 600px) {
   body {
-    background-color: var(--bg-card); /* No mobile, o fundo do body vira a cor do card */
+    background-color: var(--bg-card);
   }
 
   .survey-container {
@@ -247,13 +370,13 @@ body:has(.survey-container.dark) {
   .survey-status-screen {
     height: 100vh;
   }
+
+  .nps-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+  }
 }
 
-/* ==========================================================================
-   5. TELA DE LOADING & TRATAMENTO DE ERRO (RSP-02)
-   ========================================================================== */
-
-/* Containers Base Flexíveis */
 .survey-loading-container,
 .survey-error-container {
   display: flex;
@@ -265,7 +388,6 @@ body:has(.survey-container.dark) {
   padding: 20px;
 }
 
-/* Envelopes de Ícones Circulares */
 .loading-icon-wrapper,
 .error-icon-wrapper {
   width: 90px;
@@ -286,7 +408,6 @@ body:has(.survey-container.dark) {
   box-shadow: 0 8px 20px rgba(229, 62, 62, 0.1);
 }
 
-/* Textos */
 .loading-title,
 .error-title {
   font-size: 22px;
@@ -308,7 +429,6 @@ body:has(.survey-container.dark) {
   color: #a0aec0;
 }
 
-/* Animação Básica de Rotação Suave para o Ícone */
 .sparkle-icon {
   animation: spin 4s linear infinite;
 }
@@ -318,7 +438,6 @@ body:has(.survey-container.dark) {
   to { transform: rotate(360deg); }
 }
 
-/* Sistema de Pontos Pulsantes (Bouncing Dots) */
 .loading-dots {
   display: flex;
   gap: 8px;
@@ -348,9 +467,16 @@ body:has(.survey-container.dark) {
   40% { transform: scale(1.2); opacity: 1; }
 }
 
-/* Botão específico para tentar novamente */
 .btn-retry {
   max-width: 200px;
   padding: 12px 24px;
   font-size: 16px;
+}
+
+.unsupported-type-alert {
+  padding: 16px;
+  color: #e53e3e;
+  background: rgba(229, 62, 62, 0.1);
+  border-radius: 8px;
+  font-weight: 500;
 }
