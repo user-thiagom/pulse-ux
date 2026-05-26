@@ -82,7 +82,7 @@ export default function LoginPage() {
 
                     <div className="auth-redirect">
                         <Text>Não tem uma conta?</Text>{' '}
-                        <a onClick={() => navigate('/cadastro')} className="auth-link">Cadastre-se</a>
+                        <a onClick={() => navigate('/register')} className="auth-link">Cadastre-se</a>
                     </div>
                 </div>
             </div>

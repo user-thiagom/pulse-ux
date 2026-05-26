@@ -18,7 +18,7 @@ export default function LandingPage() {
                     <Button type="text" onClick={() => navigate('/login')} className="nav-login-btn">
                         Login
                     </Button>
-                    <Button type="primary" onClick={() => navigate('/cadastro')} className="nav-signup-btn">
+                    <Button type="primary" onClick={() => navigate('/register')} className="nav-signup-btn">
                         Cadastre-se
                     </Button>
                 </nav>
@@ -34,7 +34,7 @@ export default function LandingPage() {
                             A plataforma definitiva para criar, gerenciar e analisar pesquisas de UX, focada em transformar dados em experiências incríveis.
                         </p>
                         <div className="hero-actions">
-                            <Button type="primary" size="large" onClick={() => navigate('/cadastro')} className="hero-btn-primary">
+                            <Button type="primary" size="large" onClick={() => navigate('/register')} className="hero-btn-primary">
                                 Começar Agora <RocketOutlined />
                             </Button>
                             <Button size="large" onClick={() => navigate('/home')} className="hero-btn-secondary">

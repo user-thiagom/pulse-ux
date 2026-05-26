@@ -1,27 +1,32 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Input, Button, Typography, Divider } from 'antd';
+import { Form, Input, Button, Typography, Divider, notification } from 'antd';
 import { UserOutlined, MailOutlined, LockOutlined, BarChartOutlined } from '@ant-design/icons';
-import './CadastroPage.css';
+import './RegisterPage.css';
 
 const { Title, Text } = Typography;
 
-export default function CadastroPage() {
+export default function RegisterPage() {
+    const [api, contextHolder] = notification.useNotification();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
     const onFinish = (values) => {
         setLoading(true);
-        
+        api['success']({
+            title: "Cadastrado com sucesso!",
+            description: `${values.name}, você será redircionado para a tela de login`
+        })
         setTimeout(() => {
             console.log('Registration values:', values);
             setLoading(false);
-            navigate('/home');
-        }, 1500);
+            navigate('/login');
+        }, 2000);
     };
 
     return (
         <div className="auth-layout">
+            {contextHolder}
             <div className="auth-sidebar cadastro-sidebar">
                 <div className="auth-brand" onClick={() => navigate('/')}>
                     <BarChartOutlined className="auth-brand-icon" />
