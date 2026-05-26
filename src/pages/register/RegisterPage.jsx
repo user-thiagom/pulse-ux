@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Input, Button, Typography, Divider, notification } from 'antd';
 import { UserOutlined, MailOutlined, LockOutlined, BarChartOutlined } from '@ant-design/icons';
 import './RegisterPage.css';
+import { registerUser } from '../../services/authService';
 
 const { Title, Text } = Typography;
 
@@ -13,15 +14,28 @@ export default function RegisterPage() {
 
     const onFinish = (values) => {
         setLoading(true);
-        api['success']({
-            title: "Cadastrado com sucesso!",
-            description: `${values.name}, você será redircionado para a tela de login`
-        })
-        setTimeout(() => {
-            console.log('Registration values:', values);
-            setLoading(false);
-            navigate('/login');
-        }, 2000);
+
+        const register = registerUser(values)
+
+        if (register.success) {
+            api['success']({
+                title: register.message,
+                description: `${values.name.split(" ")[0]}, você será redircionado para a tela de login`
+            })
+
+            setTimeout(() => {
+                //console.log('Registration values:', values);
+                setLoading(false);
+                navigate('/login');
+            }, 5000);
+        } else{
+            api['error']({
+                title: register.message,
+                description: `Tente novamente`
+            })
+            setLoading(false)
+        }
+
     };
 
     return (

@@ -1,27 +1,39 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Input, Button, Typography, Divider } from 'antd';
+import { Form, Input, Button, Typography, Divider, notification } from 'antd';
 import { MailOutlined, LockOutlined, BarChartOutlined } from '@ant-design/icons';
 import './LoginPage.css';
+import { loginUser } from '../../services/authService';
 
 const { Title, Text } = Typography;
 
 export default function LoginPage() {
+    const [api, contextHolder] = notification.useNotification();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
     const onFinish = (values) => {
         setLoading(true);
-        
-        setTimeout(() => {
-            console.log('Login values:', values);
-            setLoading(false);
-            navigate('/home');
-        }, 1500);
+
+        const login = loginUser(values)
+
+        if (login.success) {
+            setTimeout(() => {
+                setLoading(false);
+                navigate('/home');
+            }, 1500);
+        } else {
+            api['error']({
+                title: login.message,
+                
+            })
+            setLoading(false)
+        }
     };
 
     return (
         <div className="auth-layout">
+            {contextHolder}
             <div className="auth-sidebar">
                 <div className="auth-brand" onClick={() => navigate('/')}>
                     <BarChartOutlined className="auth-brand-icon" />
@@ -39,7 +51,7 @@ export default function LoginPage() {
                         <BarChartOutlined className="auth-brand-icon" />
                         <span>Pulse<strong>UX</strong></span>
                     </div>
-                    
+
                     <Title level={2} className="auth-title">Entrar na sua conta</Title>
                     <Text className="auth-subtitle">Preencha seus dados para acessar a plataforma.</Text>
 

@@ -3,9 +3,21 @@ import './LandingPage.css';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 import { RocketOutlined, BarChartOutlined, UserOutlined } from '@ant-design/icons';
+import { getLoggedUser } from '../../services/authService';
 
 export default function LandingPage() {
     const navigate = useNavigate();
+
+    function handleStartNow() {
+        const loggedUser = getLoggedUser();
+
+        if (loggedUser) {
+            navigate("/home");
+            return;
+        }
+
+        navigate("/login");
+    }
 
     return (
         <div className="landing-page">
@@ -34,7 +46,7 @@ export default function LandingPage() {
                             A plataforma definitiva para criar, gerenciar e analisar pesquisas de UX, focada em transformar dados em experiências incríveis.
                         </p>
                         <div className="hero-actions">
-                            <Button type="primary" size="large" onClick={() => navigate('/register')} className="hero-btn-primary">
+                            <Button type="primary" size="large" onClick={handleStartNow} className="hero-btn-primary">
                                 Começar Agora <RocketOutlined />
                             </Button>
                             <Button size="large" onClick={() => navigate('/home')} className="hero-btn-secondary">
