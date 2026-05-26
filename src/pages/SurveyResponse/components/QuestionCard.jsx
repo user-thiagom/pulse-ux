@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function QuestionCard({ question, currentAnswer, onAnswerChange }) {
+export default function QuestionCard({ question, currentAnswer, onAnswerChange, conditionalAnswer, onConditionalAnswerChange }) {
   if (!question) return null;
 
   const renderStars = () => {
@@ -144,12 +144,32 @@ export default function QuestionCard({ question, currentAnswer, onAnswerChange }
     }
   };
 
+  const shouldShowConditional = question.conditional && 
+    currentAnswer !== undefined && 
+    currentAnswer !== null && 
+    currentAnswer < question.conditional.value;
+
   return (
     <div className="question-card">
       <h2 className="question-text">{question.text}</h2>
+      
       <div className="question-content-renderer">
         {renderQuestionInput()}
       </div>
+
+      {shouldShowConditional && (
+        <div className="conditional-input-wrapper" style={{ marginTop: '30px', width: '100%' }}>
+          <hr style={{ border: '0', height: '1px', background: '#e2e8f0', margin: '25px 0' }} />
+          <h2 className="question-text">{question.conditional.text}</h2>
+          <textarea
+            className="survey-textarea"
+            placeholder="Digite aqui sua opinião..."
+            value={conditionalAnswer || ''}
+            onChange={(e) => onConditionalAnswerChange(e.target.value)}
+            maxLength={600}
+          />
+        </div>
+      )}
     </div>
   );
 }

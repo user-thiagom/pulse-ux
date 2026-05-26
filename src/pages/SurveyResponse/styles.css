@@ -480,3 +480,16 @@ body:has(.survey-container.dark) {
   border-radius: 8px;
   font-weight: 500;
 }
+
+.conditional-input-wrapper {
+  animation: fadeInConditional 0.35s ease-out forwards;
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+@keyframes fadeInConditional {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

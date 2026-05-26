@@ -4,6 +4,7 @@ import SurveyHeader from './components/SurveyHeader';
 import QuestionCard from './components/QuestionCard';
 import SurveyLoading from './components/SurveyLoading';
 import SurveyError from './components/SurveyError';
+import SurveySuccess from './components/SurveySuccess';
 import './styles.css';
 
 const getSurveyById = async (id) => {
@@ -17,11 +18,21 @@ const getSurveyById = async (id) => {
     id,
     title: "Pesquisa de Satisfação",
     questions: [
-      { id: 1, type: "rating", text: "Qual é o seu nível de satisfação com nosso serviço?" },
-      { id: 2, type: "slider", text: "Quão fácil foi usar nosso produto?", minLabel: "Difícil", maxLabel: "Muito fácil" },
+      { 
+        id: 1, 
+        type: "slider", 
+        text: "Quão fácil foi usar nosso produto?", 
+        minLabel: "Difícil", 
+        maxLabel: "Muito fácil",
+        conditional: {
+          value: 50,
+          text: "O que podemos melhorar?",
+        }
+      },
+      { id: 2, type: "rating", text: "Qual é o seu nível de satisfação com nosso serviço?" },
       { id: 3, type: "nps", text: "Em uma escala de 0 a 10, o quanto você recomendaria nossa empresa para um amigo?" },
       { id: 4, type: "multiple_choice", text: "Qual recurso você mais utiliza?", options: ["Dashboard", "Relatórios", "Criador de Pesquisas", "Configurações"] },
-      { id: 5, type: "text", text: "O que podemos melhorar no nosso produto?" }
+      { id: 5, type: "text", text: "Deixe seus comentários finais:" }
     ]
   };
 };
@@ -29,9 +40,10 @@ const getSurveyById = async (id) => {
 export default function RespondSurveyPage() {
   const { surveyId } = useParams();
   const navigate = useNavigate();
+  const currentSurveyId = surveyId || "survey-123";
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState({});
+  const [surveyResponses, setSurveyResponses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -42,8 +54,14 @@ export default function RespondSurveyPage() {
     try {
       setIsLoading(true);
       setHasError(false);
+
+      if (localStorage.getItem(`survey_completed_${currentSurveyId}`)) {
+        setIsCompleted(true);
+        setIsLoading(false);
+        return;
+      }
       
-      const data = await getSurveyById(surveyId || "survey-123");
+      const data = await getSurveyById(currentSurveyId);
       
       if (!data || !data.questions || data.questions.length === 0) {
         setHasError(true);
@@ -64,20 +82,47 @@ export default function RespondSurveyPage() {
 
   const totalQuestions = survey?.questions.length || 0;
   const currentQuestion = survey?.questions[currentQuestionIndex];
-
   const progressPercent = totalQuestions > 0 ? ((currentQuestionIndex + 1) / totalQuestions) * 100 : 0;
 
+  const currentResponse = surveyResponses.find(r => r.questionId === currentQuestion?.id) || {
+    questionId: currentQuestion?.id,
+    answer: undefined,
+    conditionalAnswer: undefined
+  };
+
+  const handleAnswerChange = (value) => {
+    setSurveyResponses(prev => {
+      const filtered = prev.filter(r => r.questionId !== currentQuestion.id);
+      return [...filtered, { ...currentResponse, answer: value }];
+    });
+  };
+
+  const handleConditionalAnswerChange = (value) => {
+    setSurveyResponses(prev => {
+      const filtered = prev.filter(r => r.questionId !== currentQuestion.id);
+      return [...filtered, { ...currentResponse, conditionalAnswer: value }];
+    });
+  };
+
   const nextQuestion = () => {
-    const currentAnswer = answers[currentQuestion.id];
-    if (currentAnswer === undefined || currentAnswer === null || currentAnswer.toString().trim() === "") {
+    if (currentResponse.answer === undefined || currentResponse.answer === null || currentResponse.answer.toString().trim() === "") {
       alert("Por favor, responda à pergunta antes de continuar.");
       return;
+    }
+
+    const hasActiveConditional = currentQuestion.conditional && currentResponse.answer < currentQuestion.conditional.value;
+    if (hasActiveConditional) {
+      if (!currentResponse.conditionalAnswer || currentResponse.conditionalAnswer.toString().trim() === "") {
+        alert("Por favor, preencha o campo de opinião complementar.");
+        return;
+      }
     }
 
     if (currentQuestionIndex < totalQuestions - 1) {
       setCurrentQuestionIndex(prevIndex => prevIndex + 1);
     } else {
-      console.log("Respostas finais coletadas:", answers);
+      localStorage.setItem(`survey_completed_${currentSurveyId}`, "true");
+      console.log("Payload final enviado de acordo com o modelo:", surveyResponses);
       setIsCompleted(true);
     }
   };
@@ -100,9 +145,8 @@ export default function RespondSurveyPage() {
 
   if (isCompleted) {
     return (
-      <div className={`survey-container state-completed ${isDarkMode ? 'dark' : ''}`}>
-        <h2>Obrigado por responder!</h2>
-        <p>Suas respostas ajudam a melhorar nosso serviço.</p>
+      <div className={`survey-container ${isDarkMode ? 'dark' : ''}`}>
+        <SurveySuccess />
       </div>
     );
   }
@@ -126,8 +170,10 @@ export default function RespondSurveyPage() {
       <main className="survey-card">
         <QuestionCard 
           question={currentQuestion}
-          currentAnswer={answers[currentQuestion.id]}
-          onAnswerChange={(value) => setAnswers({ ...answers, [currentQuestion.id]: value })}
+          currentAnswer={currentResponse.answer}
+          onAnswerChange={handleAnswerChange}
+          conditionalAnswer={currentResponse.conditionalAnswer}
+          onConditionalAnswerChange={handleConditionalAnswerChange}
         />
       </main>
 
