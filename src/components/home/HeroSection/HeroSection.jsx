@@ -1,19 +1,22 @@
 import React from 'react'
 import './HeroSection.css'
 
-const HeroSection = () => {
+const HeroSection = ({ userName }) => {
     return (
         <section className="hero-section-home">
-            <div className="hero-content-home">
-                <h1>
-                    Suas pesquisas.
-                    <br />
-                    Seus insights.
-                </h1>
-                <p>
-                    Bem-vindo ao PulseUX
-                </p>
+            <div className="hero-top-home">
+                <div className="hero-user-info-home">
+                    <span>
+                        Olá, <em>{userName}</em>
+                    </span>
+
+                    <p>
+                        Bem-vindo de volta ao PulseUX
+                    </p>
+
+                </div>
             </div>
+
         </section>
     )
 }

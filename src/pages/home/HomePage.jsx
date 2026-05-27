@@ -20,7 +20,7 @@ const HomePage = () => {
 
   return (
     <main className="home-page">
-      <HeroSection />
+      <HeroSection userName={"Thiago"}/>
       <RecentSurveySection />
       <StatsCard totalResponses={58} growth={11} />
       <div className="line-horizontal"></div>

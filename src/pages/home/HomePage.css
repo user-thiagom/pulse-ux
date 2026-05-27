@@ -1,12 +1,11 @@
 .home-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-
-    gap: 12px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.home-page p{
+.home-page p {
   text-align: center;
   font-size: var(--font-size-lg);
   font-weight: 700;
