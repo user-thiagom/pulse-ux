@@ -2,5 +2,9 @@
 @import '../login/LoginPage.css';
 
 .cadastro-sidebar {
-    background: linear-gradient(135deg, #E74031 0%, #FA8704 100%);
+    background-image: url('../../assets/backgrounds/bg1.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }

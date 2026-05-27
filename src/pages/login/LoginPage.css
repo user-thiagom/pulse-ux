@@ -7,7 +7,11 @@
 
 .auth-sidebar {
     width: 40%;
-    background: var(--color-primary-gradient);
+    background-image: url('../../assets/backgrounds/bg1.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
     color: white;
     padding: var(--spacing-xl);
     display: flex;
