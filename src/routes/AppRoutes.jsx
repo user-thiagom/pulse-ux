@@ -6,6 +6,7 @@ import HomePage from '../pages/home/HomePage'
 import CreateSurveyPage from '../pages/createSurvey/CreateSurveyPage'
 import LoginPage from '../pages/login/LoginPage'
 import RegisterPage from '../pages/register/RegisterPage'
+import MainLayout from '../components/layout/MainLayout/MainLayout';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -13,31 +14,38 @@ function AnimatedRoutes() {
     return (
         <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
+
                 <Route path="/" element={
                     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
                         <LandingPage />
                     </motion.div>
                 } />
-                <Route path="/home" element={
-                    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
-                        <HomePage />
-                    </motion.div>
-                } />
-                <Route path="/create-survey/:id" element={
-                    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
-                        <CreateSurveyPage />
-                    </motion.div>
-                } />
+
                 <Route path="/login" element={
                     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
                         <LoginPage />
                     </motion.div>
                 } />
+
                 <Route path="/register" element={
                     <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
                         <RegisterPage />
                     </motion.div>
                 } />
+
+                <Route element={<MainLayout />}>
+                    <Route path="/home" element={
+                        <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
+                            <HomePage />
+                        </motion.div>
+                    } />
+                    <Route path="/create-survey/:id" element={
+                        <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
+                            <CreateSurveyPage />
+                        </motion.div>
+                    } />
+                </Route>
+
             </Routes>
         </AnimatePresence>
     )

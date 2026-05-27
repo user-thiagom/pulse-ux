@@ -16,6 +16,7 @@ export default function RegisterPage() {
         setLoading(true);
 
         const register = registerUser(values)
+        alert("Passou pelo register")
 
         if (register.success) {
             api['success']({

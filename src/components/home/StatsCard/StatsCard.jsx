@@ -10,7 +10,7 @@ const StatsCard = ({ totalResponses, growth }) => {
                 </h2>
 
                 <p>
-                    + {growth}% desde ontem
+                    <span>+ {growth}%</span> desde ontem
                 </p>
             </div>
 

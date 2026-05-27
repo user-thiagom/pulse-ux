@@ -3,7 +3,7 @@
     flex-direction: column;
 
     gap: 24px;
-    padding: 0px 12px;
+    padding: 0px 15px;
 }
 
 .recent-surveys-header {
@@ -16,7 +16,8 @@
 }
 
 .recent-surveys-header h2 {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family-secondary);
     font-weight: 700;
     color: var(--text-primary-lightmode);
 }

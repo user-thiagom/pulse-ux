@@ -2,12 +2,26 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-bottom: 120px;
+  background-image: url('../../assets/backgrounds/bg1.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .home-page p {
   text-align: center;
   font-size: var(--font-size-lg);
   font-weight: 700;
+}
+
+.home-content{
+  background-color: var(--background-lightmode);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 20px 0px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }

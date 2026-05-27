@@ -7,8 +7,6 @@ import CreateSurveyCard from '../../components/home/CreateSurveyCard/CreateSurve
 import TemplateCard from '../../components/home/TemplateCard/TemplateCard'
 import { useNavigate } from 'react-router-dom'
 import { useSurvey } from '../../context/SurveyContext'
-import BottomNavigation from '../../components/navigation/BottomNavigation/BottomNavigation'
-
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -21,14 +19,14 @@ const HomePage = () => {
 
   return (
     <main className="home-page">
-      <HeroSection userName={"Thiago"}/>
-      <RecentSurveySection />
-      <StatsCard totalResponses={58} growth={11} />
-      <div className="line-horizontal"></div>
-      <CreateSurveyCard onClick={handleClickSurvey}/>
-      <p>ou</p>
-      <TemplateCard />
-      <BottomNavigation/>
+      <HeroSection userName={"Thiago Fernandes"} />
+      <div className="home-content">
+        <StatsCard totalResponses={58} growth={11} />
+        <RecentSurveySection />
+        <CreateSurveyCard onClick={handleClickSurvey} />
+        <p>ou</p>
+        <TemplateCard />
+      </div>
     </main>
   )
 }
