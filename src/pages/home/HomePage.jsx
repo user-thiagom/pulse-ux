@@ -7,6 +7,7 @@ import CreateSurveyCard from '../../components/home/CreateSurveyCard/CreateSurve
 import TemplateCard from '../../components/home/TemplateCard/TemplateCard'
 import { useNavigate } from 'react-router-dom'
 import { useSurvey } from '../../context/SurveyContext'
+import BottomNavigation from '../../components/navigation/BottomNavigation/BottomNavigation'
 
 
 const HomePage = () => {
@@ -27,6 +28,7 @@ const HomePage = () => {
       <CreateSurveyCard onClick={handleClickSurvey}/>
       <p>ou</p>
       <TemplateCard />
+      <BottomNavigation/>
     </main>
   )
 }
