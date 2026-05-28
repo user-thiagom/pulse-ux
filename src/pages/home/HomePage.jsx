@@ -24,7 +24,7 @@ const HomePage = () => {
         <StatsCard totalResponses={58} growth={11} />
         <RecentSurveySection />
         <CreateSurveyCard onClick={handleClickSurvey} />
-        <p>ou</p>
+        <p className='home-or'>ou</p>
         <TemplateCard />
       </div>
     </main>

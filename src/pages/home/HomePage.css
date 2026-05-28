@@ -9,19 +9,19 @@
   background-attachment: fixed;
 }
 
-.home-page p {
+.home-or {
   text-align: center;
   font-size: var(--font-size-lg);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .home-content{
   background-color: var(--background-lightmode);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
   padding: 20px 0px;
   padding-bottom: 120px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }

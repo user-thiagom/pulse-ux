@@ -1,7 +1,6 @@
 .recent-surveys-section {
     display: flex;
     flex-direction: column;
-
     gap: 5px;
     padding: 0px 15px;
 }
