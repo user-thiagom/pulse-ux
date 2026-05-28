@@ -16,9 +16,9 @@ const RecentSurveySection = ({surveyList = []}) => {
             </div>
 
             <div className="recent-surveys-list">
-                <SurveyPreviewCard status={"published"} title={"Qualidade do streaming"} responses={[0,2,3,5]} icon={"src/assets/icons/icon1.svg"}/>
-                <SurveyPreviewCard status={"draft"} title={"Qualidade do streaming"} responses={[0,2,3,5]} icon={"src/assets/icons/icon2.svg"}/>
-                <SurveyPreviewCard status={"published"} title={"Qualidade do streaming"} responses={[0,2,3,5]} icon={"src/assets/icons/icon3.svg"}/>
+                <SurveyPreviewCard status={"published"} title={"Pesquisa interna dos atendentes"} responsesQuantity={25} iconPath={"src/assets/icons/icon1.svg"}/>
+                <SurveyPreviewCard status={"draft"} title={"Pesquisa para a qualidade das entregas"} responsesQuantity={10} iconPath={"src/assets/icons/icon2.svg"}/>
+                <SurveyPreviewCard status={"published"} title={"Pesquisa para a qualidade do catálogo"} responsesQuantity={156} iconPath={"src/assets/icons/icon3.svg"}/>
                 {/* cards aqui */}
 
             </div>

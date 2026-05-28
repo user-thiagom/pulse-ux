@@ -3,51 +3,27 @@ import './SurveyPreviewCard.css'
 import { Card, Tag } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 
-const SurveyPreviewCard = ({ title, status, responses = [], icon }) => {
+const SurveyPreviewCard = ({ title, status, responsesQuantity = 0, iconPath, onClick }) => {
 
     return (
-        <section className="survey-preview-card">
-            <div className="survey-preview-content">
-                <div className="survey-preview-left">
-                    <div className="survey-preview-image">
-                        <img
-                            src={icon}
-                            alt={title}
-                        />
-                    </div>
+        <div className="survey-card">
+            <img src={iconPath} alt="Icone" className="survey-avatar" />
+            <div className={`badge ${status === "published" ? "published" : "draft"}`}>{status == "published" ? "Publicada" : "Rascunho"}</div>
+            <h3 className='survey-card-title'>{title}</h3>
 
-                    <div className="survey-preview-info">
-                        <h3>
-                            {title}
-                        </h3>
-                        <div className="survey-preview-meta">
-                            {
-                                status === "published" ? (
-                                    <Tag color="green" variant='solid' style={{borderRadius:"10px"}}>
-                                        Publicada
-                                    </Tag>
-                                ) : (
+            {
+                status === "published" ? (<p>{responsesQuantity} respostas</p>) : (<p>Continue a criação...</p>)
+            }
 
-                                    <Tag style={{color: "#fff", backgroundColor: "#757575", borderRadius:"10px"}} variant='solid'>
-                                        Rascunho
-                                    </Tag>
-                                )
-                            }
+            {
+                status === "published" ? (
+                    <button className="btn-acao-primario" onClick={onClick}>Ver resultados</button>
+                ) : (
+                    <button className="btn-acao-secundario" onClick={onClick}>Continuar rascunho</button>
+                )
+            }
 
-                            <span>
-                                {
-                                    status === "published" ? `${responses.length} respostas` : "Continue a criação da pesquisa"
-                                }
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <button className="survey-preview-arrow">
-                    <RightOutlined />
-                </button>
-            </div>
-        </section>
+        </div>
     )
 }
 
