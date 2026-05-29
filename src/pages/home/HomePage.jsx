@@ -10,11 +10,20 @@ import { useSurvey } from '../../context/SurveyContext'
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const { createSurvey } = useSurvey()
+  const { createSurvey, getRecentSurveys } = useSurvey()
+  const recentSurveys = getRecentSurveys()
 
-  function handleClickSurvey() {
+  function handleClickCreateSurvey() {
     const id = createSurvey()
     navigate(`/create-survey/${id}`)
+  }
+
+  function handleClickDraft(id) {
+    navigate(`/create-survey/${id}`)
+  }
+
+  function handleClickPublished(id) {
+    alert("Indo para a pesquisa! (vou implementar)")
   }
 
   return (
@@ -23,13 +32,17 @@ const HomePage = () => {
       <div className="home-content">
         <div className="home-summary">
           <StatsCard totalResponses={58} growth={11} />
-          <RecentSurveySection />
+          <RecentSurveySection
+            surveyList={recentSurveys}
+            onClickDraft={handleClickDraft}
+            onClickPublished={handleClickPublished}
+          />
         </div>
 
         <div className="home-cta-row">
-          <CreateSurveyCard onClick={handleClickSurvey} />
+          <CreateSurveyCard onClick={handleClickCreateSurvey} />
           <p className='home-or'>ou</p>
-          <TemplateCard onClick={()=>navigate("/home")}/>
+          <TemplateCard onClick={() => navigate("/home")} />
         </div>
       </div>
     </main>

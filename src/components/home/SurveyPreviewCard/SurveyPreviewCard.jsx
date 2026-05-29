@@ -3,7 +3,7 @@ import './SurveyPreviewCard.css'
 import { Card, Tag } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 
-const SurveyPreviewCard = ({ title, status, responsesQuantity = 0, iconPath, onClick }) => {
+const SurveyPreviewCard = ({ title, status, responsesQuantity = 0, iconPath, onClick, surveyId }) => {
 
     return (
         <div className="survey-card">
@@ -17,9 +17,9 @@ const SurveyPreviewCard = ({ title, status, responsesQuantity = 0, iconPath, onC
 
             {
                 status === "published" ? (
-                    <button className="btn-acao-primario" onClick={onClick}>Ver resultados</button>
+                    <button className="btn-acao-primario" onClick={()=>onClick(surveyId)}>Ver resultados</button>
                 ) : (
-                    <button className="btn-acao-secundario" onClick={onClick}>Continuar rascunho</button>
+                    <button className="btn-acao-secundario" onClick={()=>onClick(surveyId)}>Continuar rascunho</button>
                 )
             }
 

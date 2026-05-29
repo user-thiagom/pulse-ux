@@ -7,7 +7,7 @@ const SurveyContext = createContext();
 export function SurveyProvider({ children }) {
     const [surveys, setSurveys] = useState([]);
 
-    
+
     useEffect(() => {
         try {
             const stored = localStorage.getItem("pulseux_surveys")
@@ -31,27 +31,28 @@ export function SurveyProvider({ children }) {
         }
     }, []);
 
-    
+
     useEffect(() => {
         localStorage.setItem("pulseux_surveys", JSON.stringify(surveys));
     }, [surveys]);
 
-    
+
     function generateId() {
         return crypto.randomUUID();
     }
 
-    
-    
-    
 
-    
+
+
+
+
     function createSurvey() {
         const newSurvey = {
             id: generateId(),
             title: "Nova pesquisa",
             description: "",
             status: "draft",
+            insights: false,
             createdAt: new Date().toISOString(),
             updatedAt: null,
             publishedAt: null,
@@ -60,18 +61,13 @@ export function SurveyProvider({ children }) {
         };
 
         setSurveys(prev => [newSurvey, ...prev]);
-
         return newSurvey.id;
     }
 
-    
+
     function updateSurvey(id, data) {
         setSurveys(prev =>
             prev.map(s => {
-                if (s.status === "published") {
-                    console.warn("Pesquisa publicada não pode ser editada.");
-                    return s;
-                }
                 return s.id === id ? { ...s, ...data, updatedAt: new Date().toISOString() } : s;
             })
         );
@@ -118,23 +114,26 @@ export function SurveyProvider({ children }) {
         return published
     }
 
-    
+
     function getSurveyById(id) {
         return surveys.find(s => s.id === id) || null;
     }
 
-    
-    
-    
+    function getRecentSurveys() {
+        const recentSurveys = surveys.toSorted((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 3)
+        return recentSurveys
+    }
 
-    
+
+
+
     function addQuestion(surveyId) {
-        
+
         const questionId = generateId()
         const newQuestion = {
             id: questionId,
             text: "",
-            type: "csat", 
+            type: "csat",
             options: [],
             conditional: {
                 enabled: false,
@@ -165,7 +164,7 @@ export function SurveyProvider({ children }) {
         );
     }
 
-    
+
     function updateQuestion(surveyId, questionId, data) {
         setSurveys(prev =>
             prev.map(s =>
@@ -182,7 +181,7 @@ export function SurveyProvider({ children }) {
         );
     }
 
-    
+
     function removeQuestion(surveyId, questionId) {
         setSurveys(prev =>
             prev.map(s =>
@@ -197,11 +196,11 @@ export function SurveyProvider({ children }) {
         );
     }
 
-    
-    
-    
 
-    
+
+
+
+
     function addResponse(surveyId, response) {
         if (!response || !response.answers) {
             console.warn("Resposta inválida");
@@ -220,9 +219,9 @@ export function SurveyProvider({ children }) {
         );
     }
 
-    
-    
-    
+
+
+
 
     return (
         <SurveyContext.Provider
@@ -234,6 +233,7 @@ export function SurveyProvider({ children }) {
                 deleteSurvey,
                 publishSurvey,
                 getSurveyById,
+                getRecentSurveys,
 
                 addQuestion,
                 updateQuestion,

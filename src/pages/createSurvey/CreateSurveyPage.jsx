@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './CreateSurveyPage.css'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSurvey } from '../../context/SurveyContext'
 import SurveyEditorHeader from '../../components/survey/SurveyEditorHeader/SurveyEditorHeader'
 import SurveyQuestionCard from '../../components/survey/SurveyQuestionCard/SurveyQuestionCard'
@@ -16,6 +16,7 @@ const CreateSurveyPage = () => {
     const { getSurveyById, updateSurvey, deleteSurvey, addQuestion, updateQuestion, removeQuestion } = useSurvey();
     const { id } = useParams()
     const survey = getSurveyById(id)
+    const navigate = useNavigate()
 
     //Condicional para caso a pesquisa não seja encontrada no contexto - Thiago
     if (!survey) {
@@ -45,7 +46,7 @@ const CreateSurveyPage = () => {
 
         deleteSurvey(id)
 
-        //navigate("/my-surveys") - Mais pra frente
+        navigate(-1)
     }
 
     function handleAddQuestion() {

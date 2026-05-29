@@ -2,7 +2,7 @@ import React from 'react'
 import './RecentSurveySection.css'
 import SurveyPreviewCard from '../SurveyPreviewCard/SurveyPreviewCard'
 
-const RecentSurveySection = ({surveyList = []}) => {
+const RecentSurveySection = ({ surveyList = [], onClickDraft, onClickPublished }) => {
     return (
         <section className="recent-surveys-section">
             <div className="recent-surveys-header">
@@ -16,10 +16,17 @@ const RecentSurveySection = ({surveyList = []}) => {
             </div>
 
             <div className="recent-surveys-list">
-                <SurveyPreviewCard status={"published"} title={"Pesquisa interna dos atendentes"} responsesQuantity={25} iconPath={"src/assets/icons/icon1.svg"}/>
-                <SurveyPreviewCard status={"draft"} title={"Pesquisa para a qualidade das entregas"} responsesQuantity={10} iconPath={"src/assets/icons/icon2.svg"}/>
-                <SurveyPreviewCard status={"published"} title={"Pesquisa para a qualidade do catálogo"} responsesQuantity={156} iconPath={"src/assets/icons/icon3.svg"}/>
-                {/* cards aqui */}
+                {surveyList.map((survey, index) => (
+                    <SurveyPreviewCard
+                        key={index}
+                        status={survey.status}
+                        title={survey.title}
+                        responsesQuantity={survey.responses.length}
+                        iconPath={`src/assets/icons/icon${index + 1}.svg`}
+                        surveyId={survey.id}
+                        onClick={survey.status === "published" ? onClickPublished : onClickDraft}
+                    />
+                ))}
 
             </div>
 
