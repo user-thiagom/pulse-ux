@@ -57,3 +57,15 @@
     display: block;
     object-fit: contain;
 }
+
+@media (min-width: 1024px) {
+    .stats-card {
+        margin: 0;
+        padding: 18px 24px;
+        border-radius: 28px;
+    }
+
+    .stats-card-content h2 {
+        font-size: calc(var(--font-size-lg) + 2px);
+    }
+}

@@ -1,0 +1,101 @@
+.desktop-navigation {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .desktop-navigation {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 32px;
+        padding: 20px 40px;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .desktop-navigation-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .desktop-navigation-logo {
+        font-size: 1.35rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        color: var(--color-primary);
+    }
+
+    .desktop-navigation-brand p {
+        margin: 0;
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary-lightmode);
+    }
+
+    .desktop-navigation-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 26px;
+        flex-wrap: wrap;
+    }
+
+    .desktop-navigation-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        background: transparent;
+        color: var(--text-secondary-lightmode);
+        font-size: var(--font-size-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.2s ease, transform 0.2s ease;
+        padding: 12px 14px;
+        border-radius: 14px;
+    }
+
+    .desktop-navigation-link:hover {
+        color: var(--text-primary-lightmode);
+        transform: translateY(-1px);
+    }
+
+    .desktop-navigation-link.active {
+        color: var(--color-primary);
+        background: rgba(248, 113, 35, 0.08);
+    }
+
+    .desktop-navigation-link svg {
+        font-size: 16px;
+    }
+
+    .desktop-navigation-create-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 22px;
+        border: none;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #f05f42 0%, #fdb86d 100%);
+        color: white;
+        font-weight: 700;
+        font-size: var(--font-size-md);
+        cursor: pointer;
+        box-shadow: 0 12px 28px rgba(240, 95, 66, 0.18);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .desktop-navigation-create-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 30px rgba(240, 95, 66, 0.22);
+    }
+
+    .desktop-navigation-create-button svg {
+        font-size: 18px;
+    }
+}

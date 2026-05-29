@@ -53,3 +53,16 @@
 
     color: rgba(255, 255, 255, 0.95);
 }
+
+@media (min-width: 1024px) {
+    .create-survey-card {
+        margin: 0;
+        width: 100%;
+        padding: 22px 22px;
+        border-radius: 28px;
+    }
+
+    .create-survey-card-animation {
+        max-width: 100%;
+    }
+}

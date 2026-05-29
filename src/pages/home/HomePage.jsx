@@ -21,11 +21,16 @@ const HomePage = () => {
     <main className="home-page">
       <HeroSection userName={"Thiago Fernandes"} />
       <div className="home-content">
-        <StatsCard totalResponses={58} growth={11} />
-        <RecentSurveySection />
-        <CreateSurveyCard onClick={handleClickSurvey} />
-        <p className='home-or'>ou</p>
-        <TemplateCard />
+        <div className="home-summary">
+          <StatsCard totalResponses={58} growth={11} />
+          <RecentSurveySection />
+        </div>
+
+        <div className="home-cta-row">
+          <CreateSurveyCard onClick={handleClickSurvey} />
+          <p className='home-or'>ou</p>
+          <TemplateCard onClick={()=>navigate("/home")}/>
+        </div>
       </div>
     </main>
   )

@@ -1,4 +1,5 @@
 .survey-card {
+    width: 100%;
     flex: 0 0 48%;
     scroll-snap-align: center;
 
@@ -19,6 +20,14 @@
 
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
     justify-content: baseline;
+}
+
+@media (min-width: 1024px) {
+    .survey-card {
+        flex: unset;
+        min-width: 0;
+        width: auto;
+    }
 }
 
 .survey-avatar {

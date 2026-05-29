@@ -35,3 +35,15 @@
     color: var(--background-lightmode);
     
 }
+
+@media (min-width: 1024px) {
+    .hero-section-home {
+        padding: 28px 32px 16px;
+        max-width: 1200px;
+        margin-inline: auto;
+    }
+
+    .hero-top-home {
+        gap: 24px;
+    }
+}
