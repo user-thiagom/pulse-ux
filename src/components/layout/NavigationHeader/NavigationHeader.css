@@ -1,10 +1,20 @@
 .navigation-header {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 24px 16px;
+    gap: 10px;
+    padding: 20px 16px;
     background-color: var(--surface-primary-lightmode);
     box-shadow: var(--shadow-sm)
+}
+
+.nav-btn-logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    max-width: 110px;
 }
 
 .navigation-header-back-button {
@@ -17,7 +27,7 @@
     border: none;
     border-radius: 12px;
 
-    padding: 10px 14px;
+    padding: 8px 14px;
 
     background: var(--color-primary-gradient);
 
@@ -46,8 +56,9 @@
 }
 
 .navigation-header-content h1 {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
     color: var(--text-primary-lightmode);
+    font-weight: 800;
 }
 
 .navigation-header-content p {

@@ -11,6 +11,7 @@
         0 2px 6px rgba(0,0,0,0.08);
 
     position: relative;
+    width: 100%;
 }
 
 .question-card-number {

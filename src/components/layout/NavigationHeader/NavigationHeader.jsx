@@ -8,18 +8,22 @@ const NavigationHeader = ({ title, subtitle, children }) => {
 
     return (
         <header className="navigation-header">
-            <button
-                className="navigation-header-back-button"
-                onClick={() => navigate(-1)}
-            >
+            <div className="nav-btn-logo">
+                <button
+                    className="navigation-header-back-button"
+                    onClick={() => navigate(-1)}
+                >
 
-                <ArrowLeft size={18} />
+                    <ArrowLeft size={18} />
 
-                <span>
-                    Voltar
-                </span>
+                    <span>
+                        Voltar
+                    </span>
 
-            </button>
+                </button>
+                <img src="src\assets\logo\logo-horizontal.svg" alt="logo-pulseux" className='logo'/>
+            </div>
+
 
             {
                 (title || subtitle) && (

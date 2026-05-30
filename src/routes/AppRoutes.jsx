@@ -7,6 +7,7 @@ import CreateSurveyPage from '../pages/createSurvey/CreateSurveyPage'
 import LoginPage from '../pages/login/LoginPage'
 import RegisterPage from '../pages/register/RegisterPage'
 import MainLayout from '../components/layout/MainLayout/MainLayout';
+import SurveysPage from '../pages/surveys/SurveysPage';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -39,6 +40,13 @@ function AnimatedRoutes() {
                             <HomePage />
                         </motion.div>
                     } />
+
+                    <Route path="/surveys" element={
+                        <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
+                            <SurveysPage/>
+                        </motion.div>
+                    } />
+
                     <Route path="/create-survey/:id" element={
                         <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
                             <CreateSurveyPage />

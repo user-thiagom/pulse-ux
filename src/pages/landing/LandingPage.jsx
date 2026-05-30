@@ -23,8 +23,8 @@ export default function LandingPage() {
         <div className="landing-page">
             <header className="landing-header">
                 <div className="landing-logo">
-                    <BarChartOutlined className="landing-logo-icon" />
-                    <span>Pulse<strong>UX</strong></span>
+                    <img src='src\assets\logo\logo-horizontal.svg' className="landing-logo-icon" />
+                    {/* <span>Pulse<strong>UX</strong></span> */}
                 </div>
                 <nav className="landing-nav">
                     <Button type="text" onClick={() => navigate('/login')} className="nav-login-btn">
