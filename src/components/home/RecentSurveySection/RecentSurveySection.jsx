@@ -2,7 +2,7 @@ import React from 'react'
 import './RecentSurveySection.css'
 import SurveyPreviewCard from '../SurveyPreviewCard/SurveyPreviewCard'
 
-const RecentSurveySection = ({ surveyList = [], onClickDraft, onClickPublished }) => {
+const RecentSurveySection = ({ surveyList = [], onClickDraft, onClickPublished, onClickListAllSurveys }) => {
     return (
         <section className="recent-surveys-section">
             <div className="recent-surveys-header">
@@ -10,7 +10,7 @@ const RecentSurveySection = ({ surveyList = [], onClickDraft, onClickPublished }
                     Minhas pesquisas recentes
                 </h2>
 
-                <button>
+                <button onClick={()=>onClickListAllSurveys()}>
                     Ver todas
                 </button>
             </div>
@@ -22,7 +22,7 @@ const RecentSurveySection = ({ surveyList = [], onClickDraft, onClickPublished }
                         status={survey.status}
                         title={survey.title}
                         responsesQuantity={survey.responses.length}
-                        iconPath={`src/assets/icons/icon${index + 1}.svg`}
+                        iconPath={survey.icon}
                         surveyId={survey.id}
                         onClick={survey.status === "published" ? onClickPublished : onClickDraft}
                     />

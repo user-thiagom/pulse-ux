@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import initialSurveys from '../data/initialSurveys.js'
 import { validateSurvey } from "../utils/validateSurvey.js";
+import getRandomIcon from "../utils/randomIcon.js";
 
 const SurveyContext = createContext();
 
@@ -38,26 +39,32 @@ export function SurveyProvider({ children }) {
 
 
     function generateId() {
-        return crypto.randomUUID();
+        // Se o crypto.randomUUID estiver disponível, usa ele (melhor performance/segurança)
+        if (typeof window !== 'undefined' && window.crypto && window.crypto.randomUUID) {
+            return window.crypto.randomUUID();
+        }
+
+        // Fallback: Gerador de UUID manual simples e compatível com HTTP
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+            const r = (Math.random() * 16) | 0;
+            const v = c === 'x' ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+        });
     }
-
-
-
-
-
 
     function createSurvey() {
         const newSurvey = {
             id: generateId(),
             title: "Nova pesquisa",
             description: "",
+            icon: getRandomIcon(),
             status: "draft",
-            insights: false,
             createdAt: new Date().toISOString(),
             updatedAt: null,
             publishedAt: null,
             questions: [],
-            responses: []
+            responses: [],
+            insights: null,
         };
 
         setSurveys(prev => [newSurvey, ...prev]);
@@ -114,7 +121,6 @@ export function SurveyProvider({ children }) {
         return published
     }
 
-
     function getSurveyById(id) {
         return surveys.find(s => s.id === id) || null;
     }
@@ -125,6 +131,9 @@ export function SurveyProvider({ children }) {
     }
 
 
+    function getSurveys() {
+        return surveys
+    }
 
 
     function addQuestion(surveyId) {
@@ -234,6 +243,7 @@ export function SurveyProvider({ children }) {
                 publishSurvey,
                 getSurveyById,
                 getRecentSurveys,
+                getSurveys,
 
                 addQuestion,
                 updateQuestion,

@@ -1,0 +1,108 @@
+.survey-card-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-published {
+    background-color: var(--color-primary);
+    border: 7px solid var(--color-primary);
+}
+
+.card-draft {
+    border: 7px solid #d5d5d5;
+    background-color: #d5d5d5;
+}
+
+.survey-card-header {
+    text-align: center;
+    padding: 5px 0px;
+    font-size: var(--font-size-md2);
+    font-weight: 700;
+}
+
+.header-published {
+    background-color: var(--color-primary);
+    color: var(--surface-primary-lightmode);
+}
+
+.header-draft {
+    background-color: #d5d5d5;
+}
+
+.survey-card-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 10px 8px;
+    border-radius: 5px;
+    background-color: var(--surface-primary-lightmode);
+    gap: 10px;
+}
+
+.survey-card-content img {
+    width: 60px;
+}
+
+.content-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-text h1 {
+    font-size: var(--font-size-md);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.content-text p{
+    font-size: var(--font-size-md);
+}
+
+.tag {
+    margin-top: 5px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    display: inline-block;
+    background-color: #e0e0e0;
+    color: #666666;
+    max-width: fit-content;
+    text-align: center;
+}
+
+.tag-insights {
+    background: var(--color-primary-gradient);
+    color: #ffffff;
+    animation: pulsar 2s infinite;
+}
+
+@keyframes pulsar {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    }
+
+    70% {
+        /* Cria a onda expandida e vai suavizando a opacidade */
+        box-shadow: 0 0 0 10px rgba(255, 152, 0, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+    }
+}
+
+.arrow-icon-card{
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
+    flex-grow: 1;
+    text-align: right;
+}

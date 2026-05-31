@@ -1,10 +1,12 @@
+import getRandomIcon from "../utils/randomIcon";
+
 const initialSurveys = [
     {
         id: "s1",
         title: "Pesquisa de Satisfação - App Mobile",
         description: "Avalie sua experiência no app",
+        icon: "src/assets/icons/icon1.svg",
         status: "published",
-        insights: false,
         createdAt: new Date().toISOString(),
         updatedAt: null,
         publishedAt: new Date().toISOString(),
@@ -98,6 +100,37 @@ const initialSurveys = [
                     { questionId: "q1_feedback", value: "Excelente experiência, principalmente após a última atualização." }
                 ]
             }
+        ],
+        insights: [
+            {
+                title: "Média das avaliações",
+                description: "A pesquisa mostrou CSAT médio de 3,7, NPS médio de 7,3 e satisfação de performance média de 66,7%.",
+                metrics: {
+                    csatAvg: 3.67,
+                    npsAvg: 7.33,
+                    sliderAvg: 66.67
+                }
+            },
+            {
+                title: "Interface bem avaliada",
+                description: "A interface foi destaque positivo em 2 de 3 respostas e aparece como ponto forte do app.",
+                evidence: ["Badge 'Interface' selecionado em 2 respostas", "comentário positivo na experiência após atualização"]
+            },
+            {
+                title: "Performance e estabilidade são prioridades",
+                description: "Feedbacks apontam lentidão em telas com muitos itens, consumo de bateria e travamento no upload de imagens.",
+                evidence: ["Badge 'Performance'", "Badge 'Estabilidade'", "comentários negativos sobre bateria e upload"]
+            },
+            {
+                title: "Há espaço para reduzir insatisfações",
+                description: "Uma resposta com CSAT 2 e NPS 4 trouxe reclamações fortes; isso indica que ajustes em performance/estabilidade podem elevar a satisfação geral.",
+                evidence: ["CSAT 2", "NPS 4", "comentário condicional sobre bateria"]
+            },
+            {
+                title: "Oportunidade de melhoria",
+                description: "Focar em performance de telas complexas e estabilidade do fluxo de upload deve ajudar a aumentar tanto CSAT quanto NPS.",
+                action: "Revisar desempenho em telas com muitos itens e qualidade do upload de mídia"
+            }
         ]
     },
 
@@ -105,8 +138,8 @@ const initialSurveys = [
         id: "s2",
         title: "Pesquisa - Atendimento",
         description: "Avalie nosso suporte",
+        icon: "src/assets/icons/icon2.svg",
         status: "published",
-        insights: false,
         createdAt: new Date().toISOString(),
         updatedAt: null,
         publishedAt: new Date().toISOString(),
@@ -180,33 +213,36 @@ const initialSurveys = [
                     { questionId: "q2_comment", value: "Precisei ligar novamente no dia seguinte." }
                 ]
             }
-        ]
+        ],
+        insights: []
     },
 
     {
         id: "s3",
         title: "Pesquisa - Nova Funcionalidade",
         description: "Em desenvolvimento",
+        icon: "src/assets/icons/icon3.svg",
         status: "draft",
-        insights: false,
         createdAt: new Date().toISOString(),
         updatedAt: null,
         publishedAt: null,
         questions: [],
-        responses: []
+        responses: [],
+        insights: []
     },
 
     {
         id: "s4",
         title: "Pesquisa - UX Dashboard",
         description: "Avaliação interna",
+        icon: "src/assets/icons/icon4.svg",
         status: "draft",
-        insights: false,
         createdAt: new Date().toISOString(),
         updatedAt: null,
         publishedAt: null,
         questions: [],
-        responses: []
+        responses: [],
+        insights: []
     }
 ];
 

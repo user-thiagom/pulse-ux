@@ -7,4 +7,19 @@
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+
+}
+
+.surveys-page-content {
+    padding: 20px 12px 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.surveys-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: scroll;
 }

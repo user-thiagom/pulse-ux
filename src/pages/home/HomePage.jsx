@@ -23,7 +23,11 @@ const HomePage = () => {
   }
 
   function handleClickPublished(id) {
-    alert("Indo para a pesquisa! (vou implementar)")
+    navigate(`/survey/${id}`)
+  }
+
+  function handleClickListAllSurveys() {
+    navigate("/surveys")
   }
 
   return (
@@ -36,6 +40,7 @@ const HomePage = () => {
             surveyList={recentSurveys}
             onClickDraft={handleClickDraft}
             onClickPublished={handleClickPublished}
+            onClickListAllSurveys={handleClickListAllSurveys}
           />
         </div>
 
