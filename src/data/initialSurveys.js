@@ -1,3 +1,4 @@
+import generateId from "../utils/generateId";
 import getRandomIcon from "../utils/randomIcon";
 
 const initialSurveys = [
@@ -13,7 +14,7 @@ const initialSurveys = [
         questions: [
             {
                 id: "q1",
-                text: "Como você avalia o app (1-5)?",
+                text: "Como você avalia o app?",
                 type: "csat",
                 options: [],
                 conditional: {
@@ -47,22 +48,58 @@ const initialSurveys = [
                 id: "q1_slider",
                 text: "Em uma escala de 0 a 100, quão satisfeito você está com a performance do app?",
                 type: "slider",
-                options: [],
-                conditional: null
+                options: ["Muito difícil", "Muito fácil"],
+                conditional: {
+                    enabled: false,
+                    condition: {
+                        operator: "<=",
+                        value: 30
+                    },
+                    question: {
+                        id: generateId(),
+                        parentId: "q1_slider",
+                        text: "O que podemos melhorar?",
+                        type: "text"
+                    }
+                }
             },
             {
                 id: "q1_badge",
                 text: "Quais áreas influenciaram sua avaliação? (marque todas)",
                 type: "badge",
                 options: ["Interface", "Performance", "Funcionalidades", "Atendimento", "Estabilidade"],
-                conditional: null
+                conditional: {
+                    enabled: false,
+                    condition: {
+                        operator: "<=",
+                        value: 0
+                    },
+                    question: {
+                        id: generateId(),
+                        parentId: "q1_badge",
+                        text: "O que podemos melhorar?",
+                        type: "text"
+                    }
+                }
             },
             {
                 id: "q1_feedback",
                 text: "Comentário aberto",
                 type: "text",
                 options: [],
-                conditional: null
+                conditional: {
+                    enabled: false,
+                    condition: {
+                        operator: "==",
+                        value: 0
+                    },
+                    question: {
+                        id: generateId(),
+                        parentId: "q1_feedback",
+                        text: "O que podemos melhorar?",
+                        type: "text"
+                    }
+                }
             }
         ],
         responses: [
@@ -70,34 +107,33 @@ const initialSurveys = [
                 id: "r1_s1",
                 createdAt: new Date().toISOString(),
                 answers: [
-                    { questionId: "q1", value: 4 },
-                    { questionId: "q1_nps", value: 8 },
-                    { questionId: "q1_slider", value: 75 },
-                    { questionId: "q1_badge", value: ["Interface", "Funcionalidades"] },
-                    { questionId: "q1_feedback", value: "Gostei da interface, poderia melhorar a performance em telas com muitos itens." }
+                    { questionId: "q1", answer: 4, conditionalAnswer: undefined },
+                    { questionId: "q1_nps", answer: 8, conditionalAnswer: undefined },
+                    { questionId: "q1_slider", answer: 75, conditionalAnswer: undefined },
+                    { questionId: "q1_badge", answer: ["Interface", "Funcionalidades"], conditionalAnswer: undefined },
+                    { questionId: "q1_feedback", answer: "Gostei da interface, poderia melhorar a performance em telas com muitos itens.", conditionalAnswer: undefined }
                 ]
             },
             {
                 id: "r2_s1",
                 createdAt: new Date().toISOString(),
                 answers: [
-                    { questionId: "q1", value: 2 },
-                    { questionId: "q1c", value: "App consome muita bateria" },
-                    { questionId: "q1_nps", value: 4 },
-                    { questionId: "q1_slider", value: 30 },
-                    { questionId: "q1_badge", value: ["Performance", "Estabilidade"] },
-                    { questionId: "q1_feedback", value: "Travou durante o upload de imagens." }
+                    { questionId: "q1", answer: 2, conditionalAnswer: "App consome muita bateria" },
+                    { questionId: "q1_nps", answer: 4, conditionalAnswer: undefined },
+                    { questionId: "q1_slider", answer: 30, conditionalAnswer: undefined },
+                    { questionId: "q1_badge", answer: ["Performance", "Estabilidade"], conditionalAnswer: undefined },
+                    { questionId: "q1_feedback", answer: "Travou durante o upload de imagens.", conditionalAnswer: undefined }
                 ]
             },
             {
                 id: "r3_s1",
                 createdAt: new Date().toISOString(),
                 answers: [
-                    { questionId: "q1", value: 5 },
-                    { questionId: "q1_nps", value: 10 },
-                    { questionId: "q1_slider", value: 95 },
-                    { questionId: "q1_badge", value: ["Interface", "Estabilidade"] },
-                    { questionId: "q1_feedback", value: "Excelente experiência, principalmente após a última atualização." }
+                    { questionId: "q1", answer: 5, conditionalAnswer: undefined },
+                    { questionId: "q1_nps", answer: 10, conditionalAnswer: undefined },
+                    { questionId: "q1_slider", answer: 95, conditionalAnswer: undefined },
+                    { questionId: "q1_badge", answer: ["Interface", "Estabilidade"], conditionalAnswer: undefined },
+                    { questionId: "q1_feedback", answer: "Excelente experiência, principalmente após a última atualização.", conditionalAnswer: undefined }
                 ]
             }
         ],
@@ -165,28 +201,73 @@ const initialSurveys = [
                 text: "Como você avalia a cordialidade do atendente? (1-5)",
                 type: "csat",
                 options: [],
-                conditional: null
+                conditional: {
+                    enabled: true,
+                    condition: { operator: "<=", value: 2 },
+                    question: {
+                        id: "q2c",
+                        parentId: "q2_csat",
+                        text: "O que não foi bom?",
+                        type: "text"
+                    }
+                }
             },
             {
                 id: "q2_slider",
                 text: "Quanto tempo de espera você considerou aceitável (0-100 onde 0=imediato,100=muito longo)?",
                 type: "slider",
-                options: [],
-                conditional: null
+                options: ["Muito difícil", "Muito fácil"],
+                conditional: {
+                    enabled: false,
+                    condition: {
+                        operator: "<=",
+                        value: 30
+                    },
+                    question: {
+                        id: generateId(),
+                        parentId: "q2_slider",
+                        text: "O que podemos melhorar?",
+                        type: "text"
+                    }
+                }
             },
             {
                 id: "q2_badge",
                 text: "Quais motivos levaram à sua nota? (marque todos)",
                 type: "badge",
                 options: ["Demora", "Resolução", "Cordialidade", "Conhecimento", "Follow-up"],
-                conditional: null
+                conditional: {
+                    enabled: false,
+                    condition: {
+                        operator: "==",
+                        value: 0
+                    },
+                    question: {
+                        id: generateId(),
+                        parentId: "q2_badge",
+                        text: "O que podemos melhorar?",
+                        type: "text"
+                    }
+                }
             },
             {
                 id: "q2_comment",
                 text: "Comentário adicional",
                 type: "text",
                 options: [],
-                conditional: null
+                conditional: {
+                    enabled: false,
+                    condition: {
+                        operator: "==",
+                        value: 0
+                    },
+                    question: {
+                        id: generateId(),
+                        parentId: "q2_comment",
+                        text: "O que podemos melhorar?",
+                        type: "text"
+                    }
+                }
             }
         ],
         responses: [
@@ -194,23 +275,22 @@ const initialSurveys = [
                 id: "r1_s2",
                 createdAt: new Date().toISOString(),
                 answers: [
-                    { questionId: "q2", value: 7 },
-                    { questionId: "q2_csat", value: 4 },
-                    { questionId: "q2_slider", value: 40 },
-                    { questionId: "q2_badge", value: ["Resolução", "Cordialidade"] },
-                    { questionId: "q2_comment", value: "Atendente resolveu meu problema rapidamente." }
+                    { questionId: "q2", answer: 7, conditionalAnswer: undefined },
+                    { questionId: "q2_csat", answer: 4, conditionalAnswer: undefined },
+                    { questionId: "q2_slider", answer: 40, conditionalAnswer: undefined },
+                    { questionId: "q2_badge", answer: ["Resolução", "Cordialidade"], conditionalAnswer: undefined },
+                    { questionId: "q2_comment", answer: "Atendente resolveu meu problema rapidamente.", conditionalAnswer: undefined }
                 ]
             },
             {
                 id: "r2_s2",
                 createdAt: new Date().toISOString(),
                 answers: [
-                    { questionId: "q2", value: 5 },
-                    { questionId: "q2c", value: "Não obtive resposta clara" },
-                    { questionId: "q2_csat", value: 3 },
-                    { questionId: "q2_slider", value: 70 },
-                    { questionId: "q2_badge", value: ["Demora", "Follow-up"] },
-                    { questionId: "q2_comment", value: "Precisei ligar novamente no dia seguinte." }
+                    { questionId: "q2", answer: 5, conditionalAnswer: "Não obtive resposta clara" },
+                    { questionId: "q2_csat", answer: 3, conditionalAnswer: undefined },
+                    { questionId: "q2_slider", answer: 70, conditionalAnswer: undefined },
+                    { questionId: "q2_badge", answer: ["Demora", "Follow-up"], conditionalAnswer: undefined },
+                    { questionId: "q2_comment", answer: "Precisei ligar novamente no dia seguinte.", conditionalAnswer: undefined }
                 ]
             }
         ],

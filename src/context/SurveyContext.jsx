@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import initialSurveys from '../data/initialSurveys.js'
 import { validateSurvey } from "../utils/validateSurvey.js";
 import getRandomIcon from "../utils/randomIcon.js";
+import generateId from "../utils/generateId.js";
 
 const SurveyContext = createContext();
 
@@ -36,21 +37,6 @@ export function SurveyProvider({ children }) {
     useEffect(() => {
         localStorage.setItem("pulseux_surveys", JSON.stringify(surveys));
     }, [surveys]);
-
-
-    function generateId() {
-        // Se o crypto.randomUUID estiver disponível, usa ele (melhor performance/segurança)
-        if (typeof window !== 'undefined' && window.crypto && window.crypto.randomUUID) {
-            return window.crypto.randomUUID();
-        }
-
-        // Fallback: Gerador de UUID manual simples e compatível com HTTP
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-            const r = (Math.random() * 16) | 0;
-            const v = c === 'x' ? r : (r & 0x3) | 0x8;
-            return v.toString(16);
-        });
-    }
 
     function createSurvey() {
         const newSurvey = {
@@ -190,11 +176,6 @@ export function SurveyProvider({ children }) {
         );
     }
 
-
-
-
-
-
     function addResponse(surveyId, response) {
         if (!response || !response.answers) {
             console.warn("Resposta inválida");
@@ -234,7 +215,8 @@ export function SurveyProvider({ children }) {
                 updateQuestion,
                 removeQuestion,
 
-                addResponse
+                addResponse,
+                generateId
             }}
         >
             {children}

@@ -1,7 +1,7 @@
 import React from 'react'
 import './PublishedSurveyPage.css'
 import NavigationHeader from '../../components/layout/NavigationHeader/NavigationHeader'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSurvey } from '../../context/SurveyContext'
 import { CopyOutlined, DownloadOutlined, RocketOutlined } from '@ant-design/icons'
 
@@ -9,10 +9,15 @@ import { CopyOutlined, DownloadOutlined, RocketOutlined } from '@ant-design/icon
 const PublishedSurveyPage = () => {
     const { getSurveyById } = useSurvey();
     const { id } = useParams()
+    const navigate = useNavigate()
     const survey = getSurveyById(id)
 
     if (!survey) {
         return <p>Pesquisa não encontrada</p>;
+    }
+
+    function handleClickCopy() {
+        navigate(`/respond/${id}`)
     }
 
     return (
@@ -34,8 +39,8 @@ const PublishedSurveyPage = () => {
                         <span className="survey-link">
                             {`https://pulseux.app/s/${survey.id}`}
                         </span>
-                        <button className="copy-link-btn">
-                            <CopyOutlined className='icons'/>
+                        <button className="copy-link-btn" onClick={() => handleClickCopy()}>
+                            <CopyOutlined className='icons' />
                             Copiar
                         </button>
                     </div>
@@ -48,7 +53,7 @@ const PublishedSurveyPage = () => {
                     </p>
 
                     <button className="download-btn">
-                        <DownloadOutlined className='icons'/>
+                        <DownloadOutlined className='icons' />
                         Baixar QR Code
                     </button>
                 </div>

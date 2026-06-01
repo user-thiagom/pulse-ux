@@ -10,6 +10,7 @@ import MainLayout from '../components/layout/MainLayout/MainLayout';
 import SurveysPage from '../pages/surveys/SurveysPage';
 import SurveyPage from '../pages/survey/SurveyPage';
 import PublishedSurveyPage from '../pages/publishedSurvey/PublishedSurveyPage';
+import SurveyResponse from "../pages/SurveyResponse";
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -66,7 +67,14 @@ function AnimatedRoutes() {
                             <CreateSurveyPage />
                         </motion.div>
                     } />
+
                 </Route>
+
+                <Route path="/respond/:id" element={
+                    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
+                        <SurveyResponse />
+                    </motion.div>
+                } />
 
             </Routes>
         </AnimatePresence>
