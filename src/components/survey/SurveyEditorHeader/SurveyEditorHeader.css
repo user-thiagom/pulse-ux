@@ -33,6 +33,12 @@
 .survey-description-display p {
     font-size: var(--font-size-md);
     color: var(--text-secondary-lightmode);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .survey-title-input,
@@ -62,7 +68,7 @@
 .survey-editor-actions button {
     border: none;
     border-radius: var(--radius-button);
-    padding: 8px 9px;
+    padding: 11px 9px;
     font-size: var(--font-size-sm);
     font-weight: 600;
     cursor: pointer;
@@ -76,19 +82,21 @@
 .save-button {
     background-color: #374151;
     color: var(--background-lightmode);
+    flex-grow: 1;
 }
 
 .publish-button {
     background: var(--color-primary-gradient);
     color: var(--background-lightmode);
+    flex-grow: 1;
 }
 
 .delete-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-
-    align-self: flex-end;
+    width: 100%;
 
     background-color: #FEE2E2;
     color: #D32F2F;

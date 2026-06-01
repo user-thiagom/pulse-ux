@@ -84,11 +84,11 @@ const SurveyEditorHeader = ({ title, description, onTitleChange, onDescriptionCh
             <div className="survey-editor-actions">
 
                 <div className="survey-editor-primary-actions">
-                    <button className="save-button" onClick={onSave}>
+                    <button className="save-button" onClick={() => onSave()}>
                         Salvar e sair
                     </button>
 
-                    <button className="publish-button" onClick={onPublish}>
+                    <button className="publish-button" onClick={() => onPublish()}>
                         Publicar pesquisa
                     </button>
                 </div>

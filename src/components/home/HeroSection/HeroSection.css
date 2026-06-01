@@ -1,6 +1,6 @@
 .hero-section-home {
     width: 100%;
-    padding: 15px 15px;
+    padding: 20px 15px;
 }
 
 .hero-top-home {
@@ -18,12 +18,13 @@
 }
 
 .hero-user-info-home span {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-lg2);
     color: var(--background-lightmode);
 }
 
 .hero-user-info-home span em {
-    font-weight: 700;
+    font-size: var(--font-size-lg2);
+    font-weight: 800;
     background: var(--background-lightmode);
     -webkit-background-clip: text;
     background-clip: text;
@@ -31,8 +32,13 @@
 }
 
 .hero-user-info-home p {
-    font-size: var(--font-size-xsm);
+    font-size: var(--font-size-md);
     color: var(--background-lightmode);
+    
+}
+
+.logout-icon{
+    color: white;
     
 }
 

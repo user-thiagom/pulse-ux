@@ -19,7 +19,7 @@ const SurveysPage = () => {
 
     function handleClickCard(surveyStatus, surveyId) {
         if (surveyStatus === "published") {
-            navigate(`/survey/${surveyId}`)
+            navigate(`/published-survey/${surveyId}`)
         } else{
             navigate(`/create-survey/${surveyId}`)
         }

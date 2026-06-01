@@ -7,10 +7,13 @@
     flex-direction: column;
     gap: 15px;
 
-    /* padding: var(--spacing-lg); */
-
-    background-color: var(--background-lightmode);
     padding-bottom: 120px;
+
+    background-image: url('../../assets/backgrounds/bg1.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .create-survey-content {
@@ -58,7 +61,7 @@
     transform: translateY(-2px);
 
     box-shadow:
-        0 6px 18px rgba(255,149,0,0.12);
+        0 6px 18px rgba(255, 149, 0, 0.12);
 }
 
 .add-question-button span:first-child {

@@ -1,5 +1,6 @@
 import React from 'react'
 import './HeroSection.css'
+import { LogOut } from 'lucide-react'
 
 const HeroSection = ({ userName }) => {
     return (
@@ -15,8 +16,10 @@ const HeroSection = ({ userName }) => {
                     </p>
 
                 </div>
+                <div className="logout-icon">
+                    <LogOut size={"32"}/>
+                </div>
             </div>
-
         </section>
     )
 }

@@ -64,7 +64,7 @@ export function SurveyProvider({ children }) {
             publishedAt: null,
             questions: [],
             responses: [],
-            insights: null,
+            insights: [],
         };
 
         setSurveys(prev => [newSurvey, ...prev]);
@@ -89,36 +89,21 @@ export function SurveyProvider({ children }) {
 
     //Publicar pesquisa - Thiago
     function publishSurvey(id) {
-        let published = false;
-
         setSurveys(prev =>
             prev.map(s => {
-                const validation = validateSurvey(s)
-
-                if (!validation.isValid) {
-                    console.warn(validation.errors)
+                if (s.id !== id) {
                     return s
+                }else {
+                    if (s.questions.length == 0) {
+                        console.warn("Não é possível publicar sem perguntas")
+                        return s
+                    }
+
+                    console.log("cheguou aqui")
+                    return { ...s, status: "published", updatedAt: new Date().toISOString(), publishedAt: new Date().toISOString() }
                 }
-
-                if (s.status === "published") {
-                    console.warn("Esta pesquisa já está publicada");
-                    return s;
-                }
-
-                if (s.id !== id) return s
-
-                if (!s.questions.length) {
-                    console.warn("Não é possível publicar sem perguntas")
-                    return s
-                }
-
-                published = true
-
-                return { ...s, status: "published", updatedAt: new Date().toISOString(), publishedAt: new Date().toISOString() }
             })
         )
-
-        return published
     }
 
     function getSurveyById(id) {

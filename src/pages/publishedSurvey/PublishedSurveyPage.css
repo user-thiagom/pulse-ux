@@ -1,0 +1,155 @@
+.published-survey-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../../assets/backgrounds/bg-surveys.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.published-survey-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    /* border: 1px solid; */
+    padding: 45px 16px 120px 16px;
+}
+
+.published-survey-icon {
+    width: fit-content;
+    display: flex;
+    font-size: 100px;
+    background: var(--color-primary-gradient);
+    color: white;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(239, 155, 57, 0.771);
+    animation: pulsar 2s infinite ease-in-out;
+}
+
+@keyframes pulsar {
+    0% {
+        transform: scale(1);
+        background-color: var(--color-primary);
+        /* Cor inicial (vermelho vivo) */
+        box-shadow: 0 0 0 0 rgba(239, 155, 57, 0.771);
+    }
+
+    50% {
+        transform: scale(1.1);
+        /* Aumenta 10% do tamanho */
+        background-color: var(--border-secondary-button-lightmode);
+        /* Cor intermediária (mais clara) */
+        box-shadow: 0 0 0 15px rgba(255, 71, 87, 0);
+        /* Efeito extra de onda */
+    }
+
+    100% {
+        transform: scale(1);
+        /* Volta ao tamanho original */
+        background-color: var(--color-primary);
+        /* Volta à cor inicial */
+        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+    }
+}
+
+.published-survey-title {
+    color: var(--text-primary-lightmode);
+    font-size: var(--font-size-lg2);
+    font-weight: 700;
+}
+
+.published-survey-text {
+    color: var(--text-secondary-lightmode);
+    font-size: var(--font-size-md);
+    text-align: center;
+    margin-top: -25px;
+}
+
+.published-survey-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    margin-bottom: -25px;
+    background-color: var(--surface-primary-lightmode);
+    border-radius: 10px;
+    padding: 10px 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.published-survey-card p {
+    font-size: var(--font-size-md);
+    color: var(--text-secondary-lightmode);
+    margin-top: -5px;
+    font-weight: 500;
+}
+
+.card-title {
+    font-size: var(--font-size-md2);
+    font-weight: 700;
+}
+
+.copy-link-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.survey-link {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    color: var(--text-secondary-lightmode);
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    border: 1px solid #D1D1D1;
+    background-color: #ECECEC;
+    border-radius: 5px;
+    padding: 8px;
+    flex-grow: 2;
+}
+
+.copy-link-btn {
+    border: none;
+    background: var(--color-primary-gradient);
+    color: white;
+    font-size: var(--font-size-sm2);
+    font-weight: 700;
+    padding: 6px;
+    border-radius: 5px;
+    min-width: fit-content;
+}
+
+.download-btn {
+    border: 1px solid #D2D2D2;
+    background-color: #ECECEC;
+    color: var(--text-primary-lightmode);
+    font-size: var(--font-size-sm2);
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: fit-content;
+}
+
+.icons {
+    font-size: var(--font-size-lg);
+    margin-right: 5px;
+}
+
+.survey-results-btn {
+    margin-top: 10px;
+    border: none;
+    background: var(--color-primary-gradient);
+    color: white;
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}

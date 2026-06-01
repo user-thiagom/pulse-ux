@@ -3,6 +3,7 @@ import './SurveysInfoCard.css'
 import { WechatFilled } from '@ant-design/icons'
 
 const SurveysInfoCard = ({ responsesTotal, publishedSurveys, draftSurveys, insightSurveys }) => {
+    // TODO: Trazer dados reais para a aplicação
     return (
         <div className='surveys-info-card'>
             <div className='surveys-info-header'>

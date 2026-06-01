@@ -2,6 +2,7 @@ import React from 'react'
 import './NavigationHeader.css'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
+import logo from '../../../assets/logo/logo-horizontal.svg'
 
 const NavigationHeader = ({ title, subtitle, children }) => {
     const navigate = useNavigate()
@@ -21,7 +22,7 @@ const NavigationHeader = ({ title, subtitle, children }) => {
                     </span>
 
                 </button>
-                <img src="src\assets\logo\logo-horizontal.svg" alt="logo-pulseux" className='logo'/>
+                <img src={logo} alt="logo-pulseux" className='logo'/>
             </div>
 
 

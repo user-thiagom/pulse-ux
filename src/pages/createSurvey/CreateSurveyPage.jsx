@@ -13,7 +13,7 @@ const CreateSurveyPage = () => {
     const [selectedQuestionId, setSelectedQuestionId] = useState(null);
 
     //Optei por usar o estado global para utilizá-los nos componentes controlados - Thiago
-    const { getSurveyById, updateSurvey, deleteSurvey, addQuestion, updateQuestion, removeQuestion } = useSurvey();
+    const { getSurveyById, updateSurvey, deleteSurvey, addQuestion, updateQuestion, removeQuestion, publishSurvey } = useSurvey();
     const { id } = useParams()
     const survey = getSurveyById(id)
     const navigate = useNavigate()
@@ -54,20 +54,9 @@ const CreateSurveyPage = () => {
     }
 
     function handlePublishSurvey() {
-        const success = publishSurvey(id);
-
-        if (!success) {
-            return;
-        }
-
-        setIsPublishing(true);
-
-        setTimeout(() => {
-
-            //IMPLEMENTAR MAIS PRA FRENTE
-            //navigate(`/survey/${id}`);
-
-        }, 2000);
+        publishSurvey(id);
+        //setIsPublishing(true);
+        navigate("/home")
     }
 
     function handleOpenTypeModal(questionId) {
