@@ -1,4 +1,4 @@
-﻿import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+﻿import { BrowserRouter, Routes, Route, useLocation, HashRouter } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion';
 import { pageTransition, pageVariants } from '../utils/animationConfig';
 import LandingPage from '../pages/landing/LandingPage'
@@ -90,8 +90,8 @@ function AnimatedRoutes() {
 
 export default function AppRoutes() {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <AnimatedRoutes />
-        </BrowserRouter>
+        </HashRouter>
     )
 }
