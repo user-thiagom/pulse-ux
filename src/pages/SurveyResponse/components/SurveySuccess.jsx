@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function SurveySuccess() {
+  //TODO: Fazer essa tela ficar por uns 3 segundos e depois ir para a home da aplicação
   return (
     <div className="survey-container state-completed">
       <div className="loading-icon-wrapper" style={{ backgroundColor: '#ebfbee', color: '#2b8a3e', boxShadow: '0 8px 20px rgba(43, 138, 62, 0.1)' }}>

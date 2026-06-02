@@ -5,7 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useSurvey } from '../../context/SurveyContext'
 import { CopyOutlined, DownloadOutlined, RocketOutlined } from '@ant-design/icons'
 
-//TODO: Definir as props e deixar os botões funcionais
 const PublishedSurveyPage = () => {
     const { getSurveyById } = useSurvey();
     const { id } = useParams()
