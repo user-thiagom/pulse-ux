@@ -502,3 +502,57 @@ body:has(.survey-container-respond.dark) {
     transform: translateY(0);
   }
 }
+
+/* Interaction animations (CSS-only) */
+/* Stars: pop + rotate when selected or pressed */
+.star-button {
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.star-button.selected,
+.star-button:active {
+  animation: star-pop 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes star-pop {
+  0% { transform: scale(1) rotate(0deg); }
+  30% { transform: scale(1.26) rotate(-8deg); }
+  60% { transform: scale(0.98) rotate(6deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* NPS buttons: subtle scale on active/selected */
+.nps-btn {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.nps-btn.active,
+.nps-btn:active {
+  transform: scale(1.06);
+  box-shadow: 0 6px 18px rgba(255,138,0,0.12);
+}
+
+/* Choice chips (badges): bounce and elevate when selected */
+.choice-chip {
+  transition: transform 200ms cubic-bezier(0.2, 0.85, 0.2, 1), box-shadow 200ms;
+}
+.choice-chip.active,
+.choice-chip:active {
+  animation: chip-bounce 320ms cubic-bezier(0.2, 0.85, 0.2, 1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+@keyframes chip-bounce {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-8px) scale(1.03); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Slider: glow pulse on focus/active */
+.custom-slider:focus,
+.custom-slider:active {
+  outline: none;
+  box-shadow: 0 0 0 8px rgba(255,106,0,0.06);
+  transition: box-shadow 260ms ease-out;
+}
+
+/* small tactile feedback */
+.star-button:active { transform: scale(1.06); }
+.nps-btn:active { transform: scale(0.99); }
+.choice-chip:active { transform: translateY(-4px); }

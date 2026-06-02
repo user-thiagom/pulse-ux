@@ -23,7 +23,7 @@ const HomePage = () => {
   }
 
   function handleClickPublished(id) {
-    navigate(`/survey/${id}`)
+    navigate(`/published-survey/${id}`)
   }
 
   function handleClickListAllSurveys() {

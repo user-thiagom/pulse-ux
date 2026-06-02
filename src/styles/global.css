@@ -37,3 +37,28 @@ textarea {
 button {
     transition: var(--transition-default);
 }
+
+/* Global button tactile feedback */
+button, [role="button"] {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+button:active {
+  transform: translateY(1px) scale(0.995);
+  opacity: 0.97;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* Exclude the survey response container to preserve its custom animations */
+.survey-container-respond button:active,
+.survey-container-respond button:focus {
+  transform: none;
+  box-shadow: none;
+  opacity: 1;
+}
