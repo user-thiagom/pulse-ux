@@ -1,9 +1,9 @@
 import generateId from "../utils/generateId";
 import getRandomIcon from "../utils/randomIcon";
-import icon1 from "https://ibb.co/HL4wpLxk";
-import icon2 from "https://ibb.co/ccTzPNMc";
-import icon3 from "https://ibb.co/twM4FxJ4";
-import icon4 from "https://ibb.co/pjw2k1Kz";
+import icon1 from "../assets/icons/icon1.svg";
+import icon2 from "../assets/icons/icon2.svg";
+import icon3 from "../assets/icons/icon3.svg";
+import icon4 from "../assets/icons/icon4.svg";
 
 const initialSurveys = [
     {

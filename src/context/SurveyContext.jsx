@@ -3,12 +3,48 @@ import initialSurveys from '../data/initialSurveys.js'
 import { validateSurvey } from "../utils/validateSurvey.js";
 import getRandomIcon from "../utils/randomIcon.js";
 import generateId from "../utils/generateId.js";
+import icon1 from '../assets/icons/icon1.svg';
+import icon2 from '../assets/icons/icon2.svg';
+import icon3 from '../assets/icons/icon3.svg';
+import icon4 from '../assets/icons/icon4.svg';
+import icon5 from '../assets/icons/icon5.svg';
 
 const SurveyContext = createContext();
 
 export function SurveyProvider({ children }) {
     const [surveys, setSurveys] = useState([]);
 
+    const iconMap = {
+        'src/assets/icons/icon1.svg': icon1,
+        'src/assets/icons/icon2.svg': icon2,
+        'src/assets/icons/icon3.svg': icon3,
+        'src/assets/icons/icon4.svg': icon4,
+        'src/assets/icons/icon5.svg': icon5,
+        'src\\assets\\icons\\icon1.svg': icon1,
+        'src\\assets\\icons\\icon2.svg': icon2,
+        'src\\assets\\icons\\icon3.svg': icon3,
+        'src\\assets\\icons\\icon4.svg': icon4,
+        'src\\assets\\icons\\icon5.svg': icon5,
+    };
+
+    function normalizeIconPath(path) {
+        if (typeof path !== 'string') {
+            return path;
+        }
+
+        const cleaned = path.replace(/\\/g, '/');
+        if (iconMap[cleaned]) {
+            return iconMap[cleaned];
+        }
+        return path;
+    }
+
+    function normalizeSurveys(rawSurveys) {
+        return rawSurveys.map((survey) => ({
+            ...survey,
+            icon: normalizeIconPath(survey.icon),
+        }));
+    }
 
     useEffect(() => {
         try {
@@ -16,17 +52,17 @@ export function SurveyProvider({ children }) {
             if (stored) {
                 const parsed = JSON.parse(stored);
                 if (Array.isArray(parsed) && parsed.length > 0) {
-                    console.log(parsed)
-                    setSurveys(parsed);
+                    const normalized = normalizeSurveys(parsed);
+                    setSurveys(normalized);
                     return
                 }
-            } else {
-                setSurveys(initialSurveys);
-                localStorage.setItem(
-                    "pulseux_surveys",
-                    JSON.stringify(initialSurveys)
-                );
             }
+
+            setSurveys(initialSurveys);
+            localStorage.setItem(
+                "pulseux_surveys",
+                JSON.stringify(initialSurveys)
+            );
 
         } catch {
             setSurveys(initialSurveys)
