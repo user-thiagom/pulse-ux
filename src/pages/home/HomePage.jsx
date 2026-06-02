@@ -7,9 +7,11 @@ import CreateSurveyCard from '../../components/home/CreateSurveyCard/CreateSurve
 import TemplateCard from '../../components/home/TemplateCard/TemplateCard'
 import { useNavigate } from 'react-router-dom'
 import { useSurvey } from '../../context/SurveyContext'
+import { getLoggedUser, logoutUser } from '../../services/authService'
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const user = getLoggedUser()
   const { createSurvey, getRecentSurveys } = useSurvey()
   const recentSurveys = getRecentSurveys()
 
@@ -30,9 +32,17 @@ const HomePage = () => {
     navigate("/surveys")
   }
 
+  function handleClickLogout() {
+    if (logoutUser()) {
+      navigate("/")
+    } else{
+      alert("Erro ao sair da aplicação")
+    }
+  }
+
   return (
     <main className="home-page">
-      <HeroSection userName={"Thiago Fernandes"} />
+      <HeroSection userName={user.name || "Thiago Fernandes"} onLogout={handleClickLogout}/>
       <div className="home-content">
         <div className="home-summary">
           <StatsCard totalResponses={58} growth={11} />

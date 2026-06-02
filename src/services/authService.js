@@ -51,7 +51,12 @@ export function loginUser({ email, password }) {
 
 export function logoutUser() {
     localStorage.setItem("pulseux_logged_user", null)
-    return { success: true, user }
+    
+    if (getLoggedUser() == null) {
+        return true
+    } else{
+        return false
+    }
 }
 
 export function getLoggedUser() {
