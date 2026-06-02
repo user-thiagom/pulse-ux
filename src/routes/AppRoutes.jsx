@@ -9,6 +9,7 @@ import RegisterPage from '../pages/register/RegisterPage'
 import MainLayout from '../components/layout/MainLayout/MainLayout';
 import SurveysPage from '../pages/surveys/SurveysPage';
 import TemplatesPage from '../pages/templates/TemplatesPage'
+import ProfilePage from '../pages/profile/ProfilePage'
 import SurveyPage from '../pages/survey/SurveyPage';
 import PublishedSurveyPage from '../pages/publishedSurvey/PublishedSurveyPage';
 import SurveyResponse from "../pages/SurveyResponse";
@@ -54,6 +55,12 @@ function AnimatedRoutes() {
                     <Route path="/templates" element={
                         <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
                             <TemplatesPage />
+                        </motion.div>
+                    } />
+
+                    <Route path="/profile" element={
+                        <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>
+                            <ProfilePage />
                         </motion.div>
                     } />
 
