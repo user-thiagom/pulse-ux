@@ -11,6 +11,15 @@ body {
     min-height: 100vh;
 }
 
+button, 
+a, 
+input, 
+select, 
+textarea,
+[role="button"] {
+    -webkit-tap-highlight-color: transparent;
+}
+
 #root {
     min-height: 100vh;
 }

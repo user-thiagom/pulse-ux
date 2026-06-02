@@ -8,6 +8,7 @@ import SurveySuccess from './components/SurveySuccess';
 import './styles.css';
 import { useSurvey } from '../../context/SurveyContext';
 import generateId from '../../utils/generateId';
+import { playClickSound, playCompletionSound } from '../../utils/sounds';
 
 // const getSurveyById = async (id) => {
 //   await new Promise((resolve) => setTimeout(resolve, 1200)); 
@@ -148,6 +149,7 @@ export default function RespondSurveyPage() {
     }
 
     if (currentQuestionIndex < totalQuestions - 1) {
+      playClickSound()
       setCurrentQuestionIndex(prevIndex => prevIndex + 1);
     } else {
       localStorage.setItem(`survey_completed_${currentSurveyId}`, "true");
@@ -158,8 +160,9 @@ export default function RespondSurveyPage() {
         answers: surveyResponses
       }
   
-      addResponse(id, surveyResponses)
+      addResponse(id, response)
       setIsCompleted(true);
+      playCompletionSound()
     }
   };
 

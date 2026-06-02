@@ -179,6 +179,7 @@ export function SurveyProvider({ children }) {
     function addResponse(surveyId, response) {
         if (!response || !response.answers) {
             console.warn("Resposta inválida");
+            console.log(response)
             return;
         }
 

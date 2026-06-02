@@ -1,4 +1,5 @@
 import React from 'react';
+import { playClickSound, playSelectSound, playSliderSound, playSuccessSound } from '../../../utils/sounds';
 
 export default function QuestionCard({ question, currentAnswer, onAnswerChange, conditionalAnswer, onConditionalAnswerChange, isConditionalActive }) {
   if (!question) return null;
@@ -15,7 +16,10 @@ export default function QuestionCard({ question, currentAnswer, onAnswerChange, 
           key={i}
           type="button"
           className={`star-button ${isSelected ? 'selected' : ''}`}
-          onClick={() => onAnswerChange(i)}
+          onClick={() => {
+            onAnswerChange(i)
+            playSuccessSound()
+          }}
         >
           <svg
             viewBox="0 0 24 24"
@@ -43,12 +47,15 @@ export default function QuestionCard({ question, currentAnswer, onAnswerChange, 
     return (
       <div className="slider-input-container">
         <div className="slider-wrapper">
-          <input 
-            type="range" 
-            min="0" 
-            max="100" 
+          <input
+            type="range"
+            min="0"
+            max="100"
             value={sliderValue}
-            onChange={(e) => onAnswerChange(Number(e.target.value))}
+            onChange={(e) => {
+              onAnswerChange(Number(e.target.value))
+              playSliderSound()
+            }}
             className="custom-slider"
           />
           <div className="slider-center-line"></div>
@@ -74,7 +81,10 @@ export default function QuestionCard({ question, currentAnswer, onAnswerChange, 
                 key={score}
                 type="button"
                 className={`nps-btn ${isSelected ? 'active' : ''}`}
-                onClick={() => onAnswerChange(score)}
+                onClick={() => {
+                  onAnswerChange(score)
+                  playSelectSound()
+                }}
               >
                 {score}
               </button>
@@ -114,7 +124,10 @@ export default function QuestionCard({ question, currentAnswer, onAnswerChange, 
               key={index}
               type="button"
               className={`choice-chip ${isSelected ? 'active' : ''}`}
-              onClick={() => toggleOption(option)}
+              onClick={() => {
+                toggleOption(option)
+                playSelectSound()
+              }}
             >
               {option}
             </button>
@@ -126,8 +139,8 @@ export default function QuestionCard({ question, currentAnswer, onAnswerChange, 
 
   const renderTextarea = () => {
     return (
-      <textarea 
-        className="survey-textarea" 
+      <textarea
+        className="survey-textarea"
         placeholder="Digite sua resposta aqui..."
         value={currentAnswer || ''}
         onChange={(e) => onAnswerChange(e.target.value)}
@@ -157,16 +170,15 @@ export default function QuestionCard({ question, currentAnswer, onAnswerChange, 
     }
   };
 
-  console.log(question)
-  const shouldShowConditional = question.conditional.enabled && 
-    currentAnswer !== undefined && 
-    currentAnswer !== null && 
+  const shouldShowConditional = question.conditional.enabled &&
+    currentAnswer !== undefined &&
+    currentAnswer !== null &&
     isConditionalActive(currentAnswer, question)
 
   return (
     <div className="question-card-respond">
       <h2 className="question-text">{question.text}</h2>
-      
+
       <div className="question-content-renderer">
         {renderQuestionInput()}
       </div>
