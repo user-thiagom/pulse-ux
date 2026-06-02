@@ -56,7 +56,7 @@ const CreateSurveyPage = () => {
     function handlePublishSurvey() {
         publishSurvey(id);
         //setIsPublishing(true);
-        navigate("/home")
+        navigate(`/published-survey/${id}`)
     }
 
     function handleOpenTypeModal(questionId) {

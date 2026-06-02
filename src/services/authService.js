@@ -1,5 +1,6 @@
 import { message } from 'antd'
 import Crypto from 'crypto-js'
+import generateId from '../utils/generateId'
 
 const USERS_KEY = "pulseux_users"
 
@@ -20,7 +21,7 @@ export function registerUser({ name, email, password }) {
     }
 
     const newUser = {
-        id: crypto.randomUUID(),
+        id: generateId(),
         name,
         email,
         password: hashPassword(password)
