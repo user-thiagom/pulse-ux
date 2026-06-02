@@ -1,12 +1,16 @@
 import generateId from "../utils/generateId";
 import getRandomIcon from "../utils/randomIcon";
+import icon1 from "../assets/icons/icon1.svg";
+import icon2 from "../assets/icons/icon2.svg";
+import icon3 from "../assets/icons/icon3.svg";
+import icon4 from "../assets/icons/icon4.svg";
 
 const initialSurveys = [
     {
         id: "s1",
         title: "Pesquisa de Satisfação - App Mobile",
         description: "Avalie sua experiência no app",
-        icon: "src/assets/icons/icon1.svg",
+        icon: icon1,
         status: "published",
         createdAt: new Date().toISOString(),
         updatedAt: null,
@@ -174,7 +178,7 @@ const initialSurveys = [
         id: "s2",
         title: "Pesquisa - Atendimento",
         description: "Avalie nosso suporte",
-        icon: "src/assets/icons/icon2.svg",
+        icon: icon2,
         status: "published",
         createdAt: new Date().toISOString(),
         updatedAt: null,
@@ -301,7 +305,7 @@ const initialSurveys = [
         id: "s3",
         title: "Pesquisa - Nova Funcionalidade",
         description: "Em desenvolvimento",
-        icon: "src/assets/icons/icon3.svg",
+        icon: icon3,
         status: "draft",
         createdAt: new Date().toISOString(),
         updatedAt: null,
@@ -315,7 +319,7 @@ const initialSurveys = [
         id: "s4",
         title: "Pesquisa - UX Dashboard",
         description: "Avaliação interna",
-        icon: "src/assets/icons/icon4.svg",
+        icon: icon4,
         status: "draft",
         createdAt: new Date().toISOString(),
         updatedAt: null,

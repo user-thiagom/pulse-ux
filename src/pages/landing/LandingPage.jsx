@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 import { RocketOutlined, BarChartOutlined, UserOutlined } from '@ant-design/icons';
 import { getLoggedUser } from '../../services/authService';
+import LogoHorizontal from '../../assets/logo/logo-horizontal.svg'
 
 export default function LandingPage() {
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function LandingPage() {
         <div className="landing-page">
             <header className="landing-header">
                 <div className="landing-logo">
-                    <img src='src\assets\logo\logo-horizontal.svg' className="landing-logo-icon" />
+                    <img src={LogoHorizontal} className="landing-logo-icon" />
                     {/* <span>Pulse<strong>UX</strong></span> */}
                 </div>
                 <nav className="landing-nav">

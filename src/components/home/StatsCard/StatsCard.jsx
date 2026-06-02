@@ -1,5 +1,6 @@
 import React from 'react'
 import './StatsCard.css'
+import growthIcon from '../../../assets/icons/growth.svg'
 
 const StatsCard = ({ totalResponses, growth }) => {
     return (
@@ -16,7 +17,7 @@ const StatsCard = ({ totalResponses, growth }) => {
 
             <div className="stats-card-image">
                 <img
-                    src="src\assets\icons\growth.svg"
+                    src={growthIcon}
                     alt="Estatísticas"
                 />
             </div>
