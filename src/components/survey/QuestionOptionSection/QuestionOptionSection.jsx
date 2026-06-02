@@ -1,5 +1,6 @@
 import React from 'react'
 import './QuestionOptionSection.css'
+import generateId from '../../../utils/generateId'
 
 const QuestionOptionSection = ({
     question,
@@ -10,7 +11,7 @@ const QuestionOptionSection = ({
     function handleAddOption() {
 
         const newOption = {
-            id: crypto.randomUUID(),
+            id: generateId(),
             label: ""
         }
 
