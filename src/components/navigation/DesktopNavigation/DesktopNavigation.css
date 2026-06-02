@@ -19,9 +19,7 @@
     }
 
     .desktop-navigation-brand {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
+        max-width: 120px;
     }
 
     .desktop-navigation-logo {

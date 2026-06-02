@@ -3,6 +3,7 @@ import './DesktopNavigation.css'
 import { HomeOutlined, FileTextOutlined, AppstoreOutlined, UserOutlined, PlusOutlined } from '@ant-design/icons'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useSurvey } from '../../../context/SurveyContext'
+import Logo from "../../../assets/logo/logo-horizontal.svg"
 
 const DesktopNavigation = () => {
     const navigate = useNavigate()
@@ -24,8 +25,7 @@ const DesktopNavigation = () => {
     return (
         <header className="desktop-navigation">
             <div className="desktop-navigation-brand">
-                <span className="desktop-navigation-logo">Pulse</span>
-                <p>UX Research</p>
+                <img src={Logo} alt="" />
             </div>
 
             <nav className="desktop-navigation-links">
